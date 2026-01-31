@@ -126,3 +126,8 @@ Este projeto faz parte de uma iniciativa educacional voltada para **aprendizagem
 - [@alinetakai](https://github.com/alinetakai)
 
 ✨ Desenvolvido com propósito educacional e carinho por **PSIDE**
+
+Educação, tecnologia e inclusão digital desde 2010.
+
+“Aprender Inglês é abrir portas.
+Aprender Inglês com tecnologia é construir o futuro.”
