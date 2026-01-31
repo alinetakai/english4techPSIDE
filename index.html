@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>English + Technology | Curso PSIDE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#0f1220;
+  --card:#1b1f3b;
+  --accent:#4a6cf7;
+  --text:#eaeaf0;
+  --muted:#aab0d6;
+  --success:#4caf50;
+  --locked:#3a3f6b;
+}
+
+body{
+  margin:0;
+  padding:20px 20px 100px;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:linear-gradient(135deg,#0f1220,#14183a);
+  color:var(--text);
+}
+
+/* ===== HERO ===== */
+.hero{
+  max-width:900px;
+  margin:40px auto;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:2.2rem;
+  margin-bottom:10px;
+}
+
+.hero span{
+  color:var(--accent);
+}
+
+.hero p{
+  color:var(--muted);
+  font-size:1.05rem;
+  line-height:1.6;
+}
+
+/* ===== MODULES ===== */
+.modules{
+  max-width:900px;
+  margin:60px auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+}
+
+.module-card{
+  background:var(--card);
+  padding:24px;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+/* ===== STATUS BAR ===== */
+.status-bar{
+  margin-bottom:18px;
+  display:flex;
+  justify-content:flex-end;
+}
+
+.badge{
+  background:var(--accent);
+  color:white;
+  padding:6px 14px;
+  border-radius:999px;
+  font-size:.75rem;
+  font-weight:600;
+  letter-spacing:.4px;
+}
+
+.module-card h3{
+  margin:0 0 10px;
+}
+
+.module-card p{
+  color:var(--muted);
+  font-size:.95rem;
+  line-height:1.5;
+}
+
+.module-card button{
+  margin-top:20px;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  font-size:15px;
+  cursor:pointer;
+}
+
+/* ===== ACTIVE MODULE ===== */
+.module-card.active{
+  border:2px solid var(--accent);
+}
+
+.module-card.active button{
+  background:var(--accent);
+  color:white;
+}
+
+/* ===== LOCKED MODULE ===== */
+.module-card.locked{
+  opacity:.6;
+}
+
+.module-card.locked button{
+  background:var(--locked);
+  color:#ccc;
+  cursor:not-allowed;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#0b0e1a;
+  text-align:center;
+  font-size:.85rem;
+  padding:12px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+  <h1>🚀 English <span>+</span> Technology</h1>
+  <p>
+    Aprenda inglês de forma prática, conectada com o mundo da tecnologia e da programação.<br>
+    Aqui você não decora frases — você <strong>usa o inglês</strong> para criar, estudar e evoluir.
+  </p>
+</section>
+
+<section class="modules">
+
+  <!-- MÓDULO 1 -->
+  <div class="module-card active">
+
+    <div class="status-bar">
+      <span class="badge">LIBERADO</span>
+    </div>
+
+    <h3>📘 Módulo 1 – Primeiros Passos</h3>
+    <p>
+      • Cumprimentos e apresentações<br>
+      • Vocabulário essencial de tecnologia<br>
+      • Listening, speaking, reading e writing<br>
+      • Atividades interativas e autocorrigidas
+    </p>
+
+    <button onclick="window.location.href='mod1.html'">
+      Acessar Módulo 1 ➡️
+    </button>
+  </div>
+
+  <!-- MÓDULO 2 -->
+  <div class="module-card locked">
+    <h3>💬 Módulo 2 – Comunicação Básica</h3>
+    <p>
+      Frases do dia a dia, diálogos mais longos, perguntas e respostas,
+      tudo conectado com o universo tech.
+    </p>
+    <button disabled>🔒 Em breve</button>
+  </div>
+
+  <!-- MÓDULO 3 -->
+  <div class="module-card locked">
+    <h3>💻 Módulo 3 – Inglês para Programação</h3>
+    <p>
+      Leitura de códigos, comandos, mensagens de erro e
+      inglês usado no desenvolvimento de software.
+    </p>
+    <button disabled>🔒 Em breve</button>
+  </div>
+
+  <!-- MÓDULO 4 -->
+  <div class="module-card locked">
+    <h3>🌍 Módulo 4 – Inglês do Mundo Real</h3>
+    <p>
+      Projetos, entrevistas, tecnologia no dia a dia
+      e comunicação real com propósito.
+    </p>
+    <button disabled>🔒 Em breve</button>
+  </div>
+
+</section>
+
+<footer>
+  © Curso PSIDE – Inglês + Tecnologia
+</footer>
+
+</body>
+</html>

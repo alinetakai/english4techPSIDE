@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mod 1 – Inglês + Tech</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --primary: #4a6cf7;
+      --secondary: #1e1e2f;
+      --accent: #00d4ff;
+      --bg: #0f1220;
+      --card: #1b1f3b;
+      --text: #ffffff;
+      --muted: #b3b3c7;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #0f1220, #1b1f3b);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 30px;
+      padding-bottom: 60px; 
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+    }
+
+    header {
+      max-width: 1000px;
+      margin: auto;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .cards {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(74,108,247,0.15), transparent 60%);
+      opacity: 0.6;
+      pointer-events: none; /* permite clicar nos botões */
+    }
+
+    .card h3 {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card p, .card ul {
+      position: relative;
+      z-index: 1;
+      color: var(--muted);
+    }
+
+    ul {
+      padding-left: 18px;
+    }
+
+    .lesson {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.04);
+      padding: 10px 14px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+    }
+
+    .lesson span {
+      font-size: 0.95rem;
+    }
+
+    button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    button:hover {
+      background: var(--accent);
+      color: #000;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(15, 18, 32, 0.95);
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.85rem;
+        padding: 10px 0;
+        z-index: 100;
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Mod 1 – Inglês + Tech</h1>
+  <p>
+    Bem-vindo ao início da sua jornada no inglês.
+    Aqui você aprende inglês do zero, com foco em comunicação real e tecnologia.
+  </p>
+</header>
+
+<section class="cards">
+
+  <div class="card">
+    <h3>🚀 Sobre o Módulo</h3>
+    <p>
+      Este módulo foi criado para iniciantes absolutos, a partir de 8 anos,
+      e também para adultos que querem aprender inglês com propósito.
+    </p>
+    <ul>
+      <li>Speaking desde a primeira aula</li>
+      <li>Inglês aplicado à vida real</li>
+      <li>Introdução ao inglês técnico (JS & Python)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>📚 Cronograma – Aulas</h3>
+
+    <div class="lesson">
+      <span>Aula 1 – Welcome & English Mindset</span>
+      <button onclick="accessLesson('aula1.html','tech')">Acessar</button>
+    </div>
+
+    <div class="lesson">
+      <span>Aula 2 – Verb to Be (Affirmative)</span>
+      <button onclick="accessLesson('aula02.html','')">🔒</button>
+    </div>
+
+    <div class="lesson">
+      <span>Aula 3 – Verb to Be (Negative)</span>
+      <button onclick="accessLesson('aula03.html','')">🔒</button>
+    </div>
+
+    <div class="lesson">
+      <span>Aula 4 – Verb to Be (Questions)</span>
+      <button onclick="accessLesson('aula04.html','')">🔒</button>
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  © Curso PSIDE – Inglês + Tecnologia
+</footer>
+
+<script>
+  function accessLesson(url, correctPassword) {
+    if (!correctPassword) {
+      alert('Aula ainda não liberada');
+      return;
+    }
+
+    const password = prompt('Digite a senha de acesso da aula:');
+    if (password === correctPassword) {
+      window.location.href = url;
+    } else {
+      alert('Senha incorreta');
+    }
+  }
+</script>
+
+</body>
+</html>

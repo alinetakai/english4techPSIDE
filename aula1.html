@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Aula 1 – Welcome & English Mindset</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#0f1220;
+  --card:#1b1f3b;
+  --accent:#4a6cf7;
+  --text:#eaeaf0;
+  --muted:#aab0d6;
+  --success:#4caf50;
+}
+
+body{
+  margin:0;
+  padding:20px 20px 80px;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:linear-gradient(135deg,#0f1220,#14183a);
+  color:var(--text);
+}
+
+h1,h2,h3{color:#fff;}
+p{color:var(--muted); line-height:1.6;}
+
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:14px;
+  margin-bottom:24px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+nav button{ margin-right:10px; }
+
+button{
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  padding:10px 16px;
+  color:white;
+  cursor:pointer;
+  font-size:14px;
+  margin-top:6px;
+}
+
+button:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.action-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  padding:8px 14px;
+  color:#fff;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.word{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.dialogue-line{
+  border-left:4px solid var(--accent);
+  padding-left:12px;
+  margin-bottom:16px;
+}
+
+.you{
+  background:rgba(74,108,247,.08);
+  padding:12px;
+  border-radius:10px;
+}
+
+.speech-result{
+  margin-top:8px;
+  color:var(--success);
+  font-weight:bold;
+}
+
+.spoken{
+  color:#00ff9c;
+  margin-top:8px;
+  font-weight:bold;
+}
+
+.translation{
+  color:#aaa;
+  font-size:.9rem;
+}
+
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#0b0e1a;
+  text-align:center;
+  font-size:.85rem;
+  padding:10px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <button onclick="window.location.href='aula1-atividades.html'">Atividades</button>
+  <button onclick="window.location.href='mod1.html'">Módulo 1</button>
+</nav>
+
+<h1>Aula 1 – Welcome & English Mindset 🚀</h1>
+
+<!-- BLOCO 1 -->
+<div class="card">
+  <h2>1️⃣ English is Everywhere</h2>
+  <p>Hello! Antes de aprender inglês, você precisa entender algo importante:</p>
+  <p><strong>O inglês já faz parte da sua vida.</strong></p>
+  <p>Computer, game, video, internet, app… você já conhece essas palavras.</p>
+  <p>👉 Isso significa que você <strong>não começa do zero</strong>.</p>
+</div>
+
+<!-- BLOCO 2 -->
+<div class="card">
+  <h2>2️⃣ First Words – Vocabulary</h2>
+
+  <div class="word">
+    <span><strong>Hello</strong> – Olá (formal/neutro)</span>
+    <button class="action-btn" onclick="speak('Hello')">🔊 Ouvir</button>
+  </div>
+  <p>Hello! My name is Ana.</p>
+
+  <div class="word">
+    <span><strong>Hi</strong> – Oi (informal)</span>
+    <button class="action-btn" onclick="speak('Hi')">🔊 Ouvir</button>
+  </div>
+  <p>Hi! How are you?</p>
+
+  <div class="word">
+    <span><strong>My name is</strong> – Meu nome é</span>
+    <button class="action-btn" onclick="speak('My name is')">🔊 Ouvir</button>
+  </div>
+  <p>My name is Carlos.</p>
+
+  <div class="word">
+    <span><strong>I like</strong> – Eu gosto de</span>
+    <button class="action-btn" onclick="speak('I like')">🔊 Ouvir</button>
+  </div>
+  <p>I like technology.</p>
+</div>
+
+<!-- BLOCO 3 -->
+<div class="card">
+  <h2>3️⃣ Listening & Reading</h2>
+
+  <div class="dialogue-line">
+    <p><strong>Alex:</strong> Hello!</p>
+    <button class="action-btn" onclick="speak('Hello!')">🔊 Ouvir</button>
+  </div>
+
+  <div class="dialogue-line you">
+    <p><strong>Nick:</strong></p>
+    <button class="action-btn" onclick="startRecording('answer1')">🎙️ Falar</button>
+    <p class="spoken" id="answer1"></p>
+    <p class="translation" id="translation1"></p>
+  </div>
+
+  <div class="dialogue-line">
+    <p><strong>Alex:</strong> My name is Alex. What is your name?</p>
+    <button class="action-btn" onclick="speak('My name is Alex. What is your name?')">🔊 Ouvir</button>
+  </div>
+
+  <div class="dialogue-line you">
+    <p><strong>Nick:</strong></p>
+    <button class="action-btn" onclick="startRecording('answer2')">🎙️ Falar</button>
+    <p class="spoken" id="answer2"></p>
+    <p class="translation" id="translation2"></p>
+  </div>
+</div>
+
+<!-- BLOCO 4 -->
+<div class="card">
+  <h2>4️⃣ Dialogue – Step by Step</h2>
+
+  <div class="dialogue-line">
+    <p><strong>Say:</strong> Hello!</p>
+    <p><em>Olá!</em></p>
+    <button class="action-btn" onclick="speak('Hello')">🔊 Ouvir</button>
+    <button class="action-btn" onclick="startRecognition('res1')">🎙️ Falar</button>
+    <p id="res1" class="speech-result"></p>
+  </div>
+
+  <div class="dialogue-line">
+    <p><strong>Say:</strong> My name is Ana.</p>
+    <p><em>Meu nome é Ana.</em></p>
+    <button class="action-btn" onclick="speak('My name is Ana')">🔊 Ouvir</button>
+    <button class="action-btn" onclick="startRecognition('res2')">🎙️ Falar</button>
+    <p id="res2" class="speech-result"></p>
+  </div>
+</div>
+
+<!-- BLOCO 5 -->
+<div class="card">
+  <h2>5️⃣ Speaking Practice 🎤</h2>
+  <ul>
+    <li>Hello</li>
+    <li>My name is (your name)</li>
+    <li>I like technology</li>
+  </ul>
+  <button class="action-btn" onclick="startRecognition('freeSpeech')">🎙️ Falar</button>
+  <p id="freeSpeech" class="speech-result"></p>
+</div>
+
+<!-- BLOCO 6 -->
+<div class="card">
+  <h2>6️⃣ English + Technology 💻</h2>
+
+  <div class="word">
+    <span>Code – código</span>
+    <button class="action-btn" onclick="speak('Code')">🔊</button>
+  </div>
+
+  <div class="word">
+    <span>Program – programa</span>
+    <button class="action-btn" onclick="speak('Program')">🔊</button>
+  </div>
+
+  <div class="word">
+    <span>Developer – desenvolvedor</span>
+    <button class="action-btn" onclick="speak('Developer')">🔊</button>
+  </div>
+
+  <p>I am a developer.</p>
+  <button class="action-btn" onclick="speak('I am a developer')">🔊 Ouvir frase</button>
+</div>
+
+<a href="aula1-atividades.html">
+  <button class="action-btn">👉 Ir para as atividades</button>
+</a>
+
+<footer>© Curso PSIDE – Inglês + Tecnologia</footer>
+
+<script>
+function speak(text){
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang='en-US';
+  speechSynthesis.speak(u);
+}
+
+function startRecognition(id){
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SpeechRecognition){
+    alert('Reconhecimento de voz não suportado');
+    return;
+  }
+  const rec = new SpeechRecognition();
+  rec.lang='en-US';
+  rec.start();
+  rec.onresult=e=>{
+    document.getElementById(id).innerHTML =
+      `🗣️ Você disse: <strong>${e.results[0][0].transcript}</strong>`;
+  };
+}
+
+const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.lang='en-US';
+
+const translations={
+  "hi":"Oi",
+  "hello":"Olá",
+  "my name is nick":"Meu nome é Nick",
+  "my name is ana":"Meu nome é Ana",
+  "i like technology":"Eu gosto de tecnologia"
+};
+
+function startRecording(targetId){
+  recognition.start();
+  recognition.onresult=e=>{
+    const spoken=e.results[0][0].transcript.toLowerCase();
+    document.getElementById(targetId).innerText=`🗣️ You said: "${spoken}"`;
+    document.getElementById(
+      targetId.replace("answer","translation")
+    ).innerText=`🇧🇷 ${translations[spoken]||"Tradução em breve 🙂"}`;
+  };
+}
+</script>
+
+</body>
+</html>

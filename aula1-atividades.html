@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Aula 1 – Atividades | English + Tech</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#0f1220;
+  --card:#1b1f3b;
+  --accent:#4a6cf7;
+  --text:#eaeaf0;
+  --muted:#aab0d6;
+  --success:#4caf50;
+  --error:#ff5c5c;
+}
+
+body{
+  margin:0;
+  padding:20px 20px 90px;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:linear-gradient(135deg,#0f1220,#14183a);
+  color:var(--text);
+}
+
+.card{
+  background:var(--card);
+  padding:24px;
+  border-radius:16px;
+  max-width:720px;
+  margin:40px auto;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+button{
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  padding:12px 18px;
+  color:white;
+  cursor:pointer;
+  font-size:15px;
+  margin-top:14px;
+}
+
+button.secondary{
+  background:#242862;
+}
+
+button:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.options button{
+  display:block;
+  width:100%;
+  margin:10px 0;
+}
+
+input, textarea{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:none;
+  margin-top:10px;
+  font-size:15px;
+}
+
+textarea{
+  min-height:140px;
+  resize:vertical;
+}
+
+.feedback{
+  margin-top:16px;
+  font-weight:bold;
+}
+
+.success{color:var(--success);}
+.error{color:var(--error);}
+
+.progress{
+  text-align:center;
+  margin-top:20px;
+  color:var(--muted);
+}
+
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#0b0e1a;
+  text-align:center;
+  font-size:.85rem;
+  padding:10px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<nav>
+  <button onclick="window.location.href='aula1.html'">Aula</button>
+  <button onclick="window.location.href='mod1.html'">Módulo 1</button>
+</nav>
+
+<h1>🚀 Aula 1 – Atividades</h1>
+<p>Resolva as atividades para avançar. Só libera ao acertar 😉</p>
+
+<h2 id="question"></h2>
+<p id="prompt"></p>
+
+<div id="input-area"></div>
+
+<p id="feedback" class="feedback"></p>
+
+<button id="nextBtn" onclick="nextActivity()" disabled>Avançar ➡️</button>
+
+<div class="progress" id="progress"></div>
+
+</div>
+
+<footer>© Curso PSIDE – Inglês + Tecnologia</footer>
+
+<script>
+const activities = [
+
+/* ===== 1–28 ===== */
+{question:"Complete the greeting:",prompt:"_____! My name is Alex.",type:"input",answers:["hello","hi"]},
+{question:"Choose the correct translation for: Hello",type:"choice",options:["Tchau","Olá","Obrigado"],answer:"Olá"},
+{question:"Complete:",prompt:"My _____ is Nick.",type:"input",answers:["name"]},
+{question:"What does 'My name is' mean?",type:"choice",options:["Meu nome é","Eu gosto de","Eu sou"],answer:"Meu nome é"},
+{question:"Complete:",prompt:"Hi! _____ are you?",type:"input",answers:["how"]},
+{question:"Listening check:",prompt:"Select the phrase you hear: 'Hello!'",type:"choice",options:["Hi!","Hello!","Bye!"],answer:"Hello!"},
+{question:"Complete:",prompt:"I _____ technology.",type:"input",answers:["like"]},
+{question:"What does 'I like technology' mean?",type:"choice",options:["Eu trabalho com tecnologia","Eu gosto de tecnologia","Eu estudo tecnologia"],answer:"Eu gosto de tecnologia"},
+{question:"Choose the correct word:",prompt:"_____ is used to write programs.",type:"choice",options:["Code","Game","Music"],answer:"Code"},
+{question:"Translate:",prompt:"Developer",type:"choice",options:["Designer","Desenvolvedor","Professor"],answer:"Desenvolvedor"},
+{question:"Complete:",prompt:"I am a _____ developer.",type:"choice",options:["banana","software","music"],answer:"software"},
+{question:"Choose the correct sentence:",type:"choice",options:["I like code","I likes code","I liking code"],answer:"I like code"},
+{question:"Complete:",prompt:"My name ____ Alex.",type:"input",answers:["is"]},
+{question:"What is the correct reply to 'Hello'?",type:"choice",options:["Bye","Hi","Thanks"],answer:"Hi"},
+{question:"Dialogue response:",prompt:"Alex: What is your name?",type:"choice",options:["My name is Nick","I like technology","Hello"],answer:"My name is Nick"},
+{question:"Complete correctly:",prompt:"I am a _____ developer.",type:"choice",options:["software","happy","banana"],answer:"software"},
+{question:"Choose the correct word:",prompt:"A person who writes code is a:",type:"choice",options:["Developer","Gamer","Student"],answer:"Developer"},
+{question:"Correct sentence:",type:"choice",options:["My name Nick","My is name Nick","My name is Nick"],answer:"My name is Nick"},
+{question:"Translate:",prompt:"Code",type:"choice",options:["Código","Programa","Jogo"],answer:"Código"},
+{question:"Complete:",prompt:"I like _____ and code.",type:"choice",options:["technology","banana","sleep"],answer:"technology"},
+{question:"Choose the correct greeting:",type:"choice",options:["Hello!","Goodbye!","Thanks!"],answer:"Hello!"},
+{question:"Complete:",prompt:"Hi! My name _____ Alex.",type:"input",answers:["is"]},
+{question:"Which is a technology word?",type:"choice",options:["Developer","Dog","Apple"],answer:"Developer"},
+{question:"Complete:",prompt:"I am a software _____.",type:"input",answers:["developer"]},
+{question:"Correct order:",type:"choice",options:["Name my is Alex","My name is Alex","My is Alex name"],answer:"My name is Alex"},
+{question:"Translate:",prompt:"I like technology",type:"choice",options:["Eu gosto de tecnologia","Eu trabalho com tecnologia","Eu estudo tecnologia"],answer:"Eu gosto de tecnologia"},
+{question:"Complete:",prompt:"I am a _____ student.",type:"choice",options:["technology","banana","music"],answer:"technology"},
+{question:"Choose the best sentence:",type:"choice",options:["I am developer","I am a developer","I developer am"],answer:"I am a developer"},
+
+/* ===== 29 – Tradução longa (CORRIGIDA) ===== */
+{
+question:"Traduza o texto para o português:",
+prompt:"This is Alex. Alex is starting to learn programming. Every day, Alex studies code and practices on the computer. Alex likes technology and wants to become a developer in the future.",
+type:"textarea",
+answers:[
+"este é alex alex está começando a aprender programação todos os dias alex estuda código e pratica no computador alex gosta de tecnologia e quer se tornar um desenvolvedor no futuro",
+"este é alex alex está começando a aprender programação todos os dias ele estuda código e pratica no computador alex gosta de tecnologia e quer se tornar um desenvolvedor no futuro"
+]
+},
+
+/* ===== 30 – Produção escrita ===== */
+{
+question:"Escreva o texto em inglês:",
+prompt:"Esta é Maria. Maria gosta de tecnologia. Ela estuda programação em casa. Maria usa o computador para aprender inglês. Ela quer trabalhar com tecnologia no futuro.",
+type:"textarea",
+answers:[
+"this is maria maria likes technology she studies programming at home maria uses the computer to learn english she wants to work with technology in the future",
+"this is maria maria likes technology she studies programming at home maria uses the computer to learn english she wants to work in technology in the future"
+]
+},
+
+/* ===== 31 – Speaking ===== */
+{
+question:"Speaking practice – Say the sentence:",
+prompt:"This is Maria. She likes technology.",
+type:"speech",
+answers:[
+"this is maria she likes technology",
+"this is maria she likes technology"
+]
+},
+
+/* ===== 32 – Listening ===== */
+{
+question:"Listening practice – Listen and choose:",
+audio:"This is Maria. She studies programming.",
+type:"choice",
+options:[
+"This is Maria. She studies programming.",
+"This is Mario. He studies programming.",
+"This is Maria. She likes games."
+],
+answer:"This is Maria. She studies programming."
+},
+
+/* ===== 33 – Listening + tradução ===== */
+{
+question:"Listening – Ouça e escolha a tradução correta:",
+audio:"I am learning programming with my computer.",
+type:"choice",
+options:[
+"Eu estou aprendendo programação com meu computador.",
+"Eu gosto de programação e computadores.",
+"Eu estou trabalhando com tecnologia no computador."
+],
+answer:"Eu estou aprendendo programação com meu computador."
+}
+
+];
+
+let index = 0;
+let spokenResult = "";
+
+const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.lang = "en-US";
+recognition.interimResults = false;
+
+/* 🔧 NORMALIZAÇÃO CORRIGIDA */
+function normalize(text){
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/\n/g," ")
+    .replace(/\s+/g," ")
+    .replace(/[.,]/g,"");
+}
+
+function speak(text){
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-US";
+  speechSynthesis.speak(u);
+}
+
+function loadActivity(){
+  const a = activities[index];
+  document.getElementById("question").innerText = `📝 ${a.question}`;
+  document.getElementById("prompt").innerText = a.prompt || "";
+  document.getElementById("feedback").innerText = "";
+  document.getElementById("nextBtn").disabled = true;
+  spokenResult = "";
+
+  const area = document.getElementById("input-area");
+  area.innerHTML = "";
+
+  if(a.audio){
+    const btn = document.createElement("button");
+    btn.innerText = "🔊 Ouvir áudio";
+    btn.onclick = ()=> speak(a.audio);
+    area.appendChild(btn);
+  }
+
+  if(a.type === "input"){
+    const input = document.createElement("input");
+    input.oninput = ()=> checkAnswer(input.value);
+    area.appendChild(input);
+  }
+
+  if(a.type === "textarea"){
+    const ta = document.createElement("textarea");
+    ta.oninput = ()=> checkAnswer(ta.value);
+    area.appendChild(ta);
+  }
+
+  if(a.type === "choice"){
+    const div = document.createElement("div");
+    div.className = "options";
+    a.options.forEach(opt=>{
+      const btn = document.createElement("button");
+      btn.innerText = opt;
+      btn.className = "secondary";
+      btn.onclick = ()=> checkAnswer(opt);
+      div.appendChild(btn);
+    });
+    area.appendChild(div);
+  }
+
+  if(a.type === "speech"){
+    const btn = document.createElement("button");
+    btn.innerText = "🎙️ Gravar fala";
+    btn.onclick = ()=>{
+      recognition.start();
+      recognition.onresult = e=>{
+        spokenResult = normalize(e.results[0][0].transcript);
+        checkAnswer(spokenResult);
+      };
+    };
+    area.appendChild(btn);
+  }
+
+  document.getElementById("progress").innerText =
+    `Atividade ${index+1} de ${activities.length}`;
+}
+
+function checkAnswer(answer){
+  const a = activities[index];
+  let correct = false;
+
+  if(a.type === "input" || a.type === "textarea"){
+    correct = a.answers.includes(normalize(answer));
+  }else if(a.type === "speech"){
+    correct = a.answers.map(normalize).includes(answer);
+  }else{
+    correct = answer === a.answer;
+  }
+
+  const fb = document.getElementById("feedback");
+
+  if(correct){
+    fb.innerText = "✅ Muito bem! Você pode avançar.";
+    fb.className = "feedback success";
+    document.getElementById("nextBtn").disabled = false;
+  }else{
+    fb.innerText = "❌ Quase! Leia com atenção e tente novamente 💡";
+    fb.className = "feedback error";
+  }
+}
+
+function nextActivity(){
+  index++;
+  if(index < activities.length){
+    loadActivity();
+  }else{
+    document.querySelector(".card").innerHTML = `
+      <h1>🎉 Parabéns!</h1>
+      <p>Você concluiu todas as atividades da Aula 1 🚀</p>
+      <button onclick="window.location.href='index.html'">Home</button>
+    `;
+  }
+}
+
+loadActivity();
+</script>
+
+</body>
+</html>
