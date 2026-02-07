@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Aula 2 – Who Am I?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#0f1220;
+  --card:#1b1f3b;
+  --accent:#4a6cf7;
+  --text:#eaeaf0;
+  --muted:#aab0d6;
+  --success:#4caf50;
+}
+
+body{
+  margin:0;
+  padding:20px 20px 80px;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:linear-gradient(135deg,#0f1220,#14183a);
+  color:var(--text);
+}
+
+h1,h2,h3{color:#fff;}
+p{color:var(--muted); line-height:1.6;}
+
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:14px;
+  margin-bottom:24px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+nav button{ margin-right:10px; }
+
+button{
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  padding:10px 16px;
+  color:white;
+  cursor:pointer;
+  font-size:14px;
+  margin-top:6px;
+}
+
+.action-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  padding:8px 14px;
+  color:#fff;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.word{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.dialogue-line{
+  border-left:4px solid var(--accent);
+  padding-left:12px;
+  margin-bottom:16px;
+}
+
+.you{
+  background:rgba(74,108,247,.08);
+  padding:12px;
+  border-radius:10px;
+}
+
+.speech-result{
+  margin-top:8px;
+  color:var(--success);
+  font-weight:bold;
+}
+
+.spoken{
+  color:#00ff9c;
+  margin-top:8px;
+  font-weight:bold;
+}
+
+.translation{
+  color:#aaa;
+  font-size:.9rem;
+}
+
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#0b0e1a;
+  text-align:center;
+  font-size:.85rem;
+  padding:10px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <button onclick="window.location.href='aula2-atividades.html'">Atividades</button>
+  <button onclick="window.location.href='mod1.html'">Módulo 1</button>
+</nav>
+
+<h1>Aula 2 – Who Am I? 👤</h1>
+
+<!-- BLOCO 1 -->
+<div class="card">
+  <h2>1️⃣ Who Am I?</h2>
+  <p>Agora que você já sabe cumprimentar alguém, é hora de dizer <strong>quem você é</strong>.</p>
+  <p>Em inglês, usamos o verbo <strong>to be</strong> para falar sobre identidade.</p>
+  <p>Hoje vamos focar em uma forma:</p>
+  <p><strong>I am</strong> → Eu sou / Eu estou</p>
+</div>
+
+<!-- BLOCO 2 -->
+<div class="card">
+  <h2>2️⃣ Verb To Be – I Am</h2>
+
+  <div class="word">
+    <span><strong>I am a student</strong> – Eu sou estudante</span>
+    <button class="action-btn" onclick="speak('I am a student')">🔊 Ouvir</button>
+  </div>
+
+  <div class="word">
+    <span><strong>I am learning English</strong> – Estou aprendendo inglês</span>
+    <button class="action-btn" onclick="speak('I am learning English')">🔊 Ouvir</button>
+  </div>
+
+  <div class="word">
+    <span><strong>I am learning technology</strong> – Estou aprendendo tecnologia</span>
+    <button class="action-btn" onclick="speak('I am learning technology')">🔊 Ouvir</button>
+  </div>
+</div>
+
+<!-- BLOCO 3 -->
+<div class="card">
+  <h2>3️⃣ English Structure</h2>
+  <p>Observe a estrutura:</p>
+
+  <p><strong>I am + information</strong></p>
+
+  <div class="dialogue-line">
+    <p>I am a student.</p>
+    <p>I am learning programming.</p>
+    <p>I am learning technology.</p>
+  </div>
+
+  <p>👉 Em inglês, a estrutura é muito importante.</p>
+  <p>Não mudamos a ordem das palavras.</p>
+</div>
+
+<!-- BLOCO 4 -->
+<div class="card">
+  <h2>4️⃣ Listening & Reading</h2>
+
+  <div class="dialogue-line">
+    <p><strong>Alex:</strong> Hello! I am Alex.</p>
+    <button class="action-btn" onclick="speak('Hello! I am Alex.')">🔊 Ouvir</button>
+  </div>
+
+  <div class="dialogue-line">
+    <p><strong>Alex:</strong> I am learning programming.</p>
+    <button class="action-btn" onclick="speak('I am learning programming.')">🔊 Ouvir</button>
+  </div>
+
+  <p class="translation">
+    Olá! Eu sou Alex. Estou aprendendo programação.
+  </p>
+</div>
+
+<!-- BLOCO 5 -->
+<div class="card">
+  <h2>5️⃣ Speaking – Say It 🎤</h2>
+
+  <div class="dialogue-line">
+    <p><strong>Say:</strong> I am a student.</p>
+    <p><em>Eu sou estudante.</em></p>
+    <button class="action-btn" onclick="speak('I am a student')">🔊 Ouvir</button>
+    <button class="action-btn" onclick="startRecognition('res1')">🎙️ Falar</button>
+    <p id="res1" class="speech-result"></p>
+  </div>
+
+  <div class="dialogue-line">
+    <p><strong>Say:</strong> I am learning technology.</p>
+    <p><em>Estou aprendendo tecnologia.</em></p>
+    <button class="action-btn" onclick="speak('I am learning technology')">🔊 Ouvir</button>
+    <button class="action-btn" onclick="startRecognition('res2')">🎙️ Falar</button>
+    <p id="res2" class="speech-result"></p>
+  </div>
+</div>
+
+<!-- BLOCO 6 -->
+<div class="card">
+  <h2>6️⃣ English + Technology 💻</h2>
+
+  <div class="word">
+    <span>Student – estudante</span>
+    <button class="action-btn" onclick="speak('Student')">🔊</button>
+  </div>
+
+  <div class="word">
+    <span>Technology – tecnologia</span>
+    <button class="action-btn" onclick="speak('Technology')">🔊</button>
+  </div>
+
+  <div class="word">
+    <span>Programming – programação</span>
+    <button class="action-btn" onclick="speak('Programming')">🔊</button>
+  </div>
+
+  <p>I am learning programming.</p>
+  <button class="action-btn" onclick="speak('I am learning programming')">🔊 Ouvir frase</button>
+</div>
+
+<a href="aula2-atividades.html">
+  <button class="action-btn">👉 Ir para as atividades</button>
+</a>
+
+<footer>© Curso PSIDE – Inglês + Tecnologia</footer>
+
+<script>
+function speak(text){
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang='en-US';
+  speechSynthesis.speak(u);
+}
+
+function startRecognition(id){
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SpeechRecognition){
+    alert('Reconhecimento de voz não suportado');
+    return;
+  }
+  const rec = new SpeechRecognition();
+  rec.lang='en-US';
+  rec.start();
+  rec.onresult=e=>{
+    document.getElementById(id).innerHTML =
+      `🗣️ Você disse: <strong>${e.results[0][0].transcript}</strong>`;
+  };
+}
+</script>
+
+</body>
+</html>

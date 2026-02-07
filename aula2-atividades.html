@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Aula 2 – Atividades | English + Tech</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#0f1220;
+  --card:#1b1f3b;
+  --accent:#4a6cf7;
+  --text:#eaeaf0;
+  --muted:#aab0d6;
+  --success:#4caf50;
+  --error:#ff5c5c;
+}
+
+body{
+  margin:0;
+  padding:20px 20px 90px;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:linear-gradient(135deg,#0f1220,#14183a);
+  color:var(--text);
+}
+
+.card{
+  background:var(--card);
+  padding:24px;
+  border-radius:16px;
+  max-width:720px;
+  margin:40px auto;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+button{
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  padding:12px 18px;
+  color:white;
+  cursor:pointer;
+  font-size:15px;
+  margin-top:14px;
+}
+
+button.secondary{
+  background:#242862;
+}
+
+button:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.options button{
+  display:block;
+  width:100%;
+  margin:10px 0;
+}
+
+input, textarea{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:none;
+  margin-top:10px;
+  font-size:15px;
+}
+
+textarea{
+  min-height:140px;
+  resize:vertical;
+}
+
+.feedback{
+  margin-top:16px;
+  font-weight:bold;
+}
+
+.success{color:var(--success);}
+.error{color:var(--error);}
+
+.progress{
+  text-align:center;
+  margin-top:20px;
+  color:var(--muted);
+}
+
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#0b0e1a;
+  text-align:center;
+  font-size:.85rem;
+  padding:10px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<nav>
+  <button onclick="window.location.href='aula2.html'">Aula</button>
+  <button onclick="window.location.href='mod1.html'">Módulo 1</button>
+</nav>
+
+<h1>🚀 Aula 2 – Atividades</h1>
+<p>Avance apenas acertando. Foque na estrutura <strong>I am</strong> 😉</p>
+
+<h2 id="question"></h2>
+<p id="prompt"></p>
+
+<div id="input-area"></div>
+
+<p id="feedback" class="feedback"></p>
+
+<button id="nextBtn" onclick="nextActivity()" disabled>Avançar ➡️</button>
+
+<div class="progress" id="progress"></div>
+
+</div>
+
+<footer>© Curso PSIDE – Inglês + Tecnologia</footer>
+
+<script>
+const activities = [
+
+/* ===== 1–24 Estrutura I AM ===== */
+{question:"Complete:",prompt:"I ___ a student.",type:"input",answers:["am"]},
+{question:"Choose the correct sentence:",type:"choice",options:["I am student","I am a student","I a student"],answer:"I am a student"},
+{question:"Translate:",prompt:"I am a student",type:"choice",options:["Eu gosto de estudar","Eu sou estudante","Eu estudo tecnologia"],answer:"Eu sou estudante"},
+{question:"Complete:",prompt:"I am learning _____.",type:"choice",options:["technology","banana","music"],answer:"technology"},
+{question:"Correct form:",type:"choice",options:["I learning programming","I am learning programming","I am learn programming"],answer:"I am learning programming"},
+{question:"Complete:",prompt:"I am learning _____.",type:"input",answers:["programming"]},
+{question:"Choose the correct translation:",prompt:"I am learning technology",type:"choice",options:["Eu gosto de tecnologia","Eu estou aprendendo tecnologia","Eu trabalho com tecnologia"],answer:"Eu estou aprendendo tecnologia"},
+{question:"Correct sentence:",type:"choice",options:["I am developer","I am a developer","I developer am"],answer:"I am a developer"},
+{question:"Complete:",prompt:"I am a ____ developer.",type:"choice",options:["software","banana","happy"],answer:"software"},
+{question:"Translate:",prompt:"Developer",type:"choice",options:["Desenvolvedor","Professor","Designer"],answer:"Desenvolvedor"},
+{question:"Complete:",prompt:"I am ____ English.",type:"input",answers:["learning"]},
+{question:"Choose the correct word:",prompt:"A person who writes code is a:",type:"choice",options:["Developer","Gamer","Student"],answer:"Developer"},
+{question:"Correct order:",type:"choice",options:["I am learning programming","I learning am programming","I am programming learning"],answer:"I am learning programming"},
+{question:"Translate:",prompt:"I am a software developer",type:"choice",options:["Eu sou um desenvolvedor de software","Eu gosto de software","Eu trabalho com computador"],answer:"Eu sou um desenvolvedor de software"},
+{question:"Complete:",prompt:"I am learning ____ at home.",type:"choice",options:["programming","banana","sports"],answer:"programming"},
+{question:"Choose the correct sentence:",type:"choice",options:["I am learning English","I learning English","I am learn English"],answer:"I am learning English"},
+{question:"Complete:",prompt:"I am a ____ student.",type:"choice",options:["technology","music","sleep"],answer:"technology"},
+{question:"Translate:",prompt:"I am learning English",type:"choice",options:["Eu estudo inglês","Eu estou aprendendo inglês","Eu gosto de inglês"],answer:"Eu estou aprendendo inglês"},
+{question:"Complete:",prompt:"I am learning ____ and programming.",type:"choice",options:["English","banana","sleep"],answer:"English"},
+{question:"Correct sentence:",type:"choice",options:["I am a technology student","I technology am student","I am student technology"],answer:"I am a technology student"},
+{question:"Translate:",prompt:"I am learning programming at home",type:"choice",options:["Eu aprendo programação","Eu estou aprendendo programação em casa","Eu gosto de programar em casa"],answer:"Eu estou aprendendo programação em casa"},
+{question:"Complete:",prompt:"I am learning programming ____ my computer.",type:"choice",options:["with","in","at"],answer:"with"},
+{question:"Choose the correct sentence:",type:"choice",options:["I am learning with my computer","I am learn my computer","I learning with computer"],answer:"I am learning with my computer"},
+{question:"Translate:",prompt:"I am learning with my computer",type:"choice",options:["Eu estou aprendendo com meu computador","Eu trabalho no computador","Eu gosto do meu computador"],answer:"Eu estou aprendendo com meu computador"},
+
+/* ===== 25 – Tradução longa ===== */
+{
+question:"Traduza o texto para o português:",
+prompt:"This is Alex. Alex is a student. He is learning programming at home. Alex uses the computer to study English and technology. He wants to become a developer in the future.",
+type:"textarea",
+answers:[
+"este é alex alex é um estudante ele está aprendendo programação em casa alex usa o computador para estudar inglês e tecnologia ele quer se tornar um desenvolvedor no futuro"
+]
+},
+
+/* ===== 26 – Produção escrita ===== */
+{
+question:"Escreva o texto em inglês:",
+prompt:"Este é Nick. Nick é estudante. Ele está aprendendo tecnologia e programação em casa. Nick usa o computador para estudar inglês.",
+type:"textarea",
+answers:[
+"this is nick nick is a student he is learning technology and programming at home nick uses the computer to study english"
+]
+},
+
+/* ===== 27 – Speaking ===== */
+{
+question:"Speaking practice – Say the sentence:",
+prompt:"I am learning programming.",
+type:"speech",
+answers:["i am learning programming"]
+},
+
+/* ===== 28 – Listening ===== */
+{
+question:"Listening – Ouça e escolha:",
+audio:"I am a technology student.",
+type:"choice",
+options:[
+"I am a technology student.",
+"I am a music student.",
+"I am learning English."
+],
+answer:"I am a technology student."
+},
+
+/* ===== 29 – Listening + tradução ===== */
+{
+question:"Listening – Ouça e escolha a tradução correta:",
+audio:"I am learning English with my computer.",
+type:"choice",
+options:[
+"Eu estou aprendendo inglês com meu computador.",
+"Eu gosto de inglês e tecnologia.",
+"Eu trabalho com computadores."
+],
+answer:"Eu estou aprendendo inglês com meu computador."
+}
+
+];
+
+let index = 0;
+let spokenResult = "";
+
+const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.lang = "en-US";
+
+function normalize(text){
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/\n/g," ")
+    .replace(/\s+/g," ")
+    .replace(/[.,]/g,"");
+}
+
+function speak(text){
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-US";
+  speechSynthesis.speak(u);
+}
+
+function loadActivity(){
+  const a = activities[index];
+  document.getElementById("question").innerText = `📝 ${a.question}`;
+  document.getElementById("prompt").innerText = a.prompt || "";
+  document.getElementById("feedback").innerText = "";
+  document.getElementById("nextBtn").disabled = true;
+  spokenResult = "";
+
+  const area = document.getElementById("input-area");
+  area.innerHTML = "";
+
+  if(a.audio){
+    const btn = document.createElement("button");
+    btn.innerText = "🔊 Ouvir áudio";
+    btn.onclick = ()=> speak(a.audio);
+    area.appendChild(btn);
+  }
+
+  if(a.type === "input"){
+    const input = document.createElement("input");
+    input.oninput = ()=> checkAnswer(input.value);
+    area.appendChild(input);
+  }
+
+  if(a.type === "textarea"){
+    const ta = document.createElement("textarea");
+    ta.oninput = ()=> checkAnswer(ta.value);
+    area.appendChild(ta);
+  }
+
+  if(a.type === "choice"){
+    const div = document.createElement("div");
+    div.className = "options";
+    a.options.forEach(opt=>{
+      const btn = document.createElement("button");
+      btn.innerText = opt;
+      btn.className = "secondary";
+      btn.onclick = ()=> checkAnswer(opt);
+      div.appendChild(btn);
+    });
+    area.appendChild(div);
+  }
+
+  if(a.type === "speech"){
+    const btn = document.createElement("button");
+    btn.innerText = "🎙️ Gravar fala";
+    btn.onclick = ()=>{
+      recognition.start();
+      recognition.onresult = e=>{
+        spokenResult = normalize(e.results[0][0].transcript);
+        checkAnswer(spokenResult);
+      };
+    };
+    area.appendChild(btn);
+  }
+
+  document.getElementById("progress").innerText =
+    `Atividade ${index+1} de ${activities.length}`;
+}
+
+function checkAnswer(answer){
+  const a = activities[index];
+  let correct = false;
+
+  if(a.type === "input" || a.type === "textarea"){
+    correct = a.answers.includes(normalize(answer));
+  }else if(a.type === "speech"){
+    correct = a.answers.map(normalize).includes(answer);
+  }else{
+    correct = answer === a.answer;
+  }
+
+  const fb = document.getElementById("feedback");
+
+  if(correct){
+    fb.innerText = "✅ Muito bem! Pode avançar.";
+    fb.className = "feedback success";
+    document.getElementById("nextBtn").disabled = false;
+  }else{
+    fb.innerText = "❌ Quase! Preste atenção na estrutura e tente novamente.";
+    fb.className = "feedback error";
+  }
+}
+
+function nextActivity(){
+  index++;
+  if(index < activities.length){
+    loadActivity();
+  }else{
+    document.querySelector(".card").innerHTML = `
+      <h1>🎉 Aula 2 concluída!</h1>
+      <p>Você avançou no uso do <strong>verb to be</strong> e identidade em inglês 🚀</p>
+      <button onclick="window.location.href='mod1.html'">Voltar ao módulo</button>
+    `;
+  }
+}
+
+loadActivity();
+</script>
+
+</body>
+</html>
