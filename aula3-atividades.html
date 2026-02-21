@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Aula 3 – Atividades | English + Tech</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#0f1220;
+  --card:#1b1f3b;
+  --accent:#4a6cf7;
+  --text:#eaeaf0;
+  --muted:#aab0d6;
+  --success:#4caf50;
+  --error:#ff5c5c;
+}
+
+body{
+  margin:0;
+  padding:20px 20px 90px;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:linear-gradient(135deg,#0f1220,#14183a);
+  color:var(--text);
+}
+
+.card{
+  background:var(--card);
+  padding:24px;
+  border-radius:16px;
+  max-width:720px;
+  margin:40px auto;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+button{
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  padding:12px 18px;
+  color:white;
+  cursor:pointer;
+  font-size:15px;
+  margin-top:14px;
+}
+
+button.secondary{
+  background:#242862;
+}
+
+button:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.options button{
+  display:block;
+  width:100%;
+  margin:10px 0;
+}
+
+input, textarea{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:none;
+  margin-top:10px;
+  font-size:15px;
+}
+
+textarea{
+  min-height:140px;
+  resize:vertical;
+}
+
+.feedback{
+  margin-top:16px;
+  font-weight:bold;
+}
+
+.success{color:var(--success);}
+.error{color:var(--error);}
+
+.progress{
+  text-align:center;
+  margin-top:20px;
+  color:var(--muted);
+}
+
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#0b0e1a;
+  text-align:center;
+  font-size:.85rem;
+  padding:10px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<nav>
+  <button onclick="window.location.href='aula3.html'">Aula</button>
+  <button onclick="window.location.href='mod1.html'">Módulo 1</button>
+</nav>
+
+<h1>🚀 Aula 3 – Atividades</h1>
+<p>Foque nas perguntas com <strong>verb to be</strong> e vocabulário tech 👩‍💻</p>
+
+<h2 id="question"></h2>
+<p id="prompt"></p>
+
+<div id="input-area"></div>
+
+<p id="feedback" class="feedback"></p>
+
+<button id="nextBtn" onclick="nextActivity()" disabled>Avançar ➡️</button>
+
+<div class="progress" id="progress"></div>
+
+</div>
+
+<footer>© Curso PSIDE – Inglês + Tecnologia</footer>
+
+<script>
+const activities = [
+
+/* ===== 1–10 Verb To Be Questions ===== */
+{question:"Complete:",prompt:"Who ___ you?",type:"input",answers:["are"]},
+{question:"Choose:",type:"choice",options:["Who are you?","Who is you?","Who am you?"],answer:"Who are you?"},
+{question:"Complete:",prompt:"I ___ a developer.",type:"input",answers:["am"]},
+{question:"Complete:",prompt:"She ___ a student.",type:"input",answers:["is"]},
+{question:"Complete:",prompt:"They ___ developers.",type:"input",answers:["are"]},
+{question:"Translate:",prompt:"Who are you?",type:"choice",options:["Quem é você?","Quem são eles?","Quem ela é?"],answer:"Quem é você?"},
+{question:"Complete:",prompt:"What ___ you learning?",type:"input",answers:["are"]},
+{question:"Choose:",type:"choice",options:["I am a student","I are a student","I is a student"],answer:"I am a student"},
+{question:"Complete:",prompt:"He ___ learning JavaScript.",type:"input",answers:["is"]},
+{question:"Choose the correct answer:",prompt:"Who are you?",type:"choice",options:["I am a developer","I developer","I learning code"],answer:"I am a developer"},
+
+/* ===== 11–20 Tech Vocabulary ===== */
+{question:"Translate:",prompt:"Function",type:"choice",options:["Evento","Função","Variável"],answer:"Função"},
+{question:"Translate:",prompt:"Variable",type:"choice",options:["Variável","Função","Biblioteca"],answer:"Variável"},
+{question:"Choose:",prompt:"HTML uses ____.",type:"choice",options:["tags","variables","loops"],answer:"tags"},
+{question:"Complete:",prompt:"CSS controls the ____.",type:"choice",options:["layout","banana","music"],answer:"layout"},
+{question:"Translate:",prompt:"The code is working",type:"choice",options:["O código está funcionando","O código é difícil","O código está errado"],answer:"O código está funcionando"},
+{question:"Complete:",prompt:"I am learning ____.",type:"choice",options:["JavaScript","banana","sleep"],answer:"JavaScript"},
+{question:"Choose:",prompt:"Bootstrap helps create responsive ____.",type:"choice",options:["layouts","songs","games"],answer:"layouts"},
+{question:"Translate:",prompt:"Library",type:"choice",options:["Biblioteca","Livro","Programa"],answer:"Biblioteca"},
+{question:"Complete:",prompt:"A click ____ triggers an action.",type:"input",answers:["event"]},
+{question:"Choose:",prompt:"Python is a ____ language.",type:"choice",options:["programming","music","sport"],answer:"programming"},
+
+/* ===== 21–28 Question & Answer Practice ===== */
+{question:"Complete:",prompt:"What ___ your name?",type:"input",answers:["is"]},
+{question:"Choose the correct reply:",prompt:"What is your name?",type:"choice",options:["My name is Alex","I am learning","Hello"],answer:"My name is Alex"},
+{question:"Complete:",prompt:"Where ___ you from?",type:"input",answers:["are"]},
+{question:"Choose:",prompt:"I am from Brazil.",type:"choice",options:["Eu sou Brasil","Eu sou do Brasil","Eu estou Brasil"],answer:"Eu sou do Brasil"},
+{question:"Complete:",prompt:"Are you a developer? – Yes, I ____.",type:"input",answers:["am"]},
+{question:"Complete:",prompt:"Is she a student? – Yes, she ____.",type:"input",answers:["is"]},
+{question:"Choose:",prompt:"Are they developers?",type:"choice",options:["Yes, they are","Yes, they is","Yes, they am"],answer:"Yes, they are"},
+{question:"Translate:",prompt:"What are you learning?",type:"choice",options:["O que você está aprendendo?","Quem você é?","Onde você está?"],answer:"O que você está aprendendo?"},
+
+/* ===== 29 – Listening ===== */
+{
+question:"Listening – Ouça e escolha:",
+audio:"Who are you? I am a software developer.",
+type:"choice",
+options:[
+"Who are you? I am a software developer.",
+"Who is you? I am a student.",
+"What are you? I am software."
+],
+answer:"Who are you? I am a software developer."
+},
+
+/* ===== 30 – Listening + tradução ===== */
+{
+question:"Listening – Ouça e escolha a tradução:",
+audio:"I am building a website.",
+type:"choice",
+options:[
+"Eu estou construindo um site.",
+"Eu gosto de sites.",
+"Eu estou estudando inglês."
+],
+answer:"Eu estou construindo um site."
+},
+
+/* ===== 31 – Speaking ===== */
+{
+question:"Speaking – Say:",
+prompt:"I am learning Python.",
+type:"speech",
+answers:["i am learning python"]
+},
+
+/* ===== 32 – Speaking ===== */
+{
+question:"Speaking – Say:",
+prompt:"Who are you?",
+type:"speech",
+answers:["who are you"]
+},
+
+/* ===== 33 – Tradução longa ===== */
+{
+question:"Traduza para o português:",
+prompt:"This is Ana. She is a software developer. She is learning JavaScript and building a website. She uses HTML and CSS to create the layout.",
+type:"textarea",
+answers:[
+"esta é ana ela é uma desenvolvedora de software ela está aprendendo javascript e construindo um site ela usa html e css para criar o layout"
+]
+},
+
+/* ===== 34 – Produção escrita ===== */
+{
+question:"Escreva em inglês:",
+prompt:"Este é Pedro. Ele é estudante. Ele está aprendendo Python e construindo um programa.",
+type:"textarea",
+answers:[
+"this is pedro he is a student he is learning python and building a program"
+]
+},
+
+/* ===== 35–40 Mission ===== */
+{question:"Complete:",prompt:"Interview question: What ___ you learning?",type:"input",answers:["are"]},
+{question:"Complete:",prompt:"Interview question: Where ___ you from?",type:"input",answers:["are"]},
+{question:"Choose:",prompt:"Correct interview question:",type:"choice",options:["Who are you?","Who you are?","Are who you?"],answer:"Who are you?"},
+{question:"Complete:",prompt:"Answer: I ___ a technology student.",type:"input",answers:["am"]},
+{question:"Complete:",prompt:"Answer: I am building a ____.",type:"choice",options:["website","banana","music"],answer:"website"},
+{question:"Final mission – Say:",prompt:"I am a technology student and I am learning programming.",
+type:"speech",
+answers:["i am a technology student and i am learning programming"]
+}
+
+];
+
+let index = 0;
+let spokenResult = "";
+
+const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.lang = "en-US";
+
+function normalize(text){
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/\n/g," ")
+    .replace(/\s+/g," ")
+    .replace(/[.,]/g,"");
+}
+
+function speak(text){
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-US";
+  speechSynthesis.speak(u);
+}
+
+function loadActivity(){
+  const a = activities[index];
+  document.getElementById("question").innerText = `📝 ${a.question}`;
+  document.getElementById("prompt").innerText = a.prompt || "";
+  document.getElementById("feedback").innerText = "";
+  document.getElementById("nextBtn").disabled = true;
+  spokenResult = "";
+
+  const area = document.getElementById("input-area");
+  area.innerHTML = "";
+
+  if(a.audio){
+    const btn = document.createElement("button");
+    btn.innerText = "🔊 Ouvir áudio";
+    btn.onclick = ()=> speak(a.audio);
+    area.appendChild(btn);
+  }
+
+  if(a.type === "input"){
+    const input = document.createElement("input");
+    input.oninput = ()=> checkAnswer(input.value);
+    area.appendChild(input);
+  }
+
+  if(a.type === "textarea"){
+    const ta = document.createElement("textarea");
+    ta.oninput = ()=> checkAnswer(ta.value);
+    area.appendChild(ta);
+  }
+
+  if(a.type === "choice"){
+    const div = document.createElement("div");
+    div.className = "options";
+    a.options.forEach(opt=>{
+      const btn = document.createElement("button");
+      btn.innerText = opt;
+      btn.className = "secondary";
+      btn.onclick = ()=> checkAnswer(opt);
+      div.appendChild(btn);
+    });
+    area.appendChild(div);
+  }
+
+  if(a.type === "speech"){
+    const btn = document.createElement("button");
+    btn.innerText = "🎙️ Gravar fala";
+    btn.onclick = ()=>{
+      recognition.start();
+      recognition.onresult = e=>{
+        spokenResult = normalize(e.results[0][0].transcript);
+        checkAnswer(spokenResult);
+      };
+    };
+    area.appendChild(btn);
+  }
+
+  document.getElementById("progress").innerText =
+    `Atividade ${index+1} de ${activities.length}`;
+}
+
+function checkAnswer(answer){
+  const a = activities[index];
+  let correct = false;
+
+  if(a.type === "input" || a.type === "textarea"){
+    correct = a.answers.includes(normalize(answer));
+  }else if(a.type === "speech"){
+    correct = a.answers.map(normalize).includes(answer);
+  }else{
+    correct = answer === a.answer;
+  }
+
+  const fb = document.getElementById("feedback");
+
+  if(correct){
+    fb.innerText = "✅ Muito bem! Pode avançar.";
+    fb.className = "feedback success";
+    document.getElementById("nextBtn").disabled = false;
+  }else{
+    fb.innerText = "❌ Quase! Revise o verb to be e tente novamente.";
+    fb.className = "feedback error";
+  }
+}
+
+function nextActivity(){
+  index++;
+  if(index < activities.length){
+    loadActivity();
+  }else{
+    document.querySelector(".card").innerHTML = `
+      <h1>🎉 Aula 3 concluída!</h1>
+      <p>Agora você já consegue fazer perguntas com <strong>verb to be</strong> e usar vocabulário técnico 👩‍💻🚀</p>
+      <button onclick="window.location.href='mod1.html'">Voltar ao módulo</button>
+    `;
+  }
+}
+
+loadActivity();
+</script>
+
+</body>
+</html>

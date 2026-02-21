@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Aula 3 – Who Are You?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#0f1220;
+  --card:#1b1f3b;
+  --accent:#4a6cf7;
+  --text:#eaeaf0;
+  --muted:#aab0d6;
+  --success:#4caf50;
+}
+
+body{
+  margin:0;
+  padding:20px 20px 80px;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:linear-gradient(135deg,#0f1220,#14183a);
+  color:var(--text);
+}
+
+h1,h2,h3{color:#fff;}
+p{color:var(--muted); line-height:1.6;}
+
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:14px;
+  margin-bottom:24px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+nav button{ margin-right:10px; }
+
+button{
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  padding:10px 16px;
+  color:white;
+  cursor:pointer;
+  font-size:14px;
+  margin-top:6px;
+}
+
+.action-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  padding:8px 14px;
+  color:#fff;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.word{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.dialogue-line{
+  border-left:4px solid var(--accent);
+  padding-left:12px;
+  margin-bottom:16px;
+}
+
+.you{
+  background:rgba(74,108,247,.08);
+  padding:12px;
+  border-radius:10px;
+}
+
+.speech-result{
+  margin-top:8px;
+  color:var(--success);
+  font-weight:bold;
+}
+
+.translation{
+  color:#aaa;
+  font-size:.9rem;
+}
+
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#0b0e1a;
+  text-align:center;
+  font-size:.85rem;
+  padding:10px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <button onclick="window.location.href='aula3-atividades.html'">Atividades</button>
+  <button onclick="window.location.href='mod1.html'">Módulo 1</button>
+</nav>
+
+<h1>Aula 3 – Who Are You? ❓</h1>
+
+<!-- BLOCO 1 -->
+<div class="card">
+  <h2>1️⃣ Explore – Questions with Verb To Be</h2>
+  <p>Agora você já sabe dizer <strong>I am</strong>.</p>
+  <p>Mas… como fazemos perguntas?</p>
+  <p>Usamos o verbo <strong>to be</strong> invertido:</p>
+  <p><strong>Am I?</strong> → Eu sou/estou?</p>
+  <p><strong>Are you?</strong> Você é/está?</p>
+  <p><strong>Is he/she/it?</strong>Ele/Ela é/está?</p>
+  <p><strong>Are we?</strong>Nós somos/estamos?</p>
+  <p><strong>Are you?</strong>Vocês são/estão?</p>
+  <p><strong>Are they?</strong>Eles/Elas são/estão?</p>
+</div>
+
+<!-- BLOCO 2 -->
+<div class="card">
+  <h2>2️⃣ Question + Answer</h2>
+
+  <div class="dialogue-line">
+    <p><strong>Are you a student?</strong></p>
+    <button class="action-btn" onclick="speak('Are you a student?')">🔊 Ouvir</button>
+    <p><em>Você é estudante?</em></p>
+  </div>
+
+  <div class="dialogue-line">
+    <p><strong>Yes, I am.</strong></p>
+    <button class="action-btn" onclick="speak('Yes, I am.')">🔊 Ouvir</button>
+    <p><em>Sim, eu sou.</em></p>
+  </div>
+
+  <div class="dialogue-line">
+    <p><strong>No, I am not.</strong></p>
+    <button class="action-btn" onclick="speak('No, I am not.')">🔊 Ouvir</button>
+    <p><em>Não, eu não sou.</em></p>
+  </div>
+</div>
+
+<!-- BLOCO 3 -->
+<div class="card">
+  <h2>3️⃣ Practice – Mini Dialogue</h2>
+
+  <div class="dialogue-line">
+    <p><strong>Teacher:</strong> Are you learning English?</p>
+    <button class="action-btn" onclick="speak('Are you learning English?')">🔊 Ouvir</button>
+  </div>
+
+  <div class="dialogue-line">
+    <p><strong>Student:</strong> Yes, I am.</p>
+    <button class="action-btn" onclick="speak('Yes, I am.')">🔊 Ouvir</button>
+  </div>
+
+  <div class="dialogue-line">
+    <p><strong>Teacher:</strong> Are you a developer?</p>
+    <button class="action-btn" onclick="speak('Are you a developer?')">🔊 Ouvir</button>
+  </div>
+
+  <div class="dialogue-line">
+    <p><strong>Student:</strong> No, I am not.</p>
+    <button class="action-btn" onclick="speak('No, I am not.')">🔊 Ouvir</button>
+  </div>
+</div>
+
+<!-- BLOCO 4 -->
+<div class="card">
+  <h2>4️⃣ Listening 🎧 & Reading 📖</h2>
+
+  <div class="dialogue-line">
+    <p><strong>Are you a student?</strong></p>
+    <button class="action-btn" onclick="speak('Are you a student?')">🔊 Ouvir</button>
+  </div>
+
+  <p class="translation">
+    Você é estudante?
+  </p>
+
+  <div class="dialogue-line">
+    <p><strong>Yes, I am.</strong></p>
+    <button class="action-btn" onclick="speak('Yes, I am.')">🔊 Ouvir</button>
+  </div>
+
+  <p class="translation">
+    Sim, eu sou.
+  </p>
+</div>
+
+<!-- BLOCO 5 -->
+<div class="card">
+  <h2>5️⃣ Mission – Interview the Teacher 🎤</h2>
+
+  <p>Agora é sua missão:</p>
+  <p>Faça perguntas para o professor usando:</p>
+
+  <ul>
+    <li>Are you a developer?</li>
+    <li>Are you a teacher?</li>
+    <li>Are you learning something new?</li>
+  </ul>
+
+  <div class="dialogue-line">
+    <p><strong>Say:</strong> Are you a developer?</p>
+    <p class="translation"> Você é um/uma programador(a)?</p>
+    <button class="action-btn" onclick="speak('Are you a developer?')">🔊 Ouvir</button>
+    <button class="action-btn" onclick="startRecognition('res1a')">🎙️ Falar</button>
+    <p id="res1a" class="speech-result"></p>
+  </div>
+
+  <div class="dialogue-line">
+    <p><strong>Say:</strong> Are you a teacher?</p>
+    <p class="translation"> Você é um/uma professor(a)?</p>
+    <button class="action-btn" onclick="speak('Are you a teacher?')">🔊 Ouvir</button>
+    <button class="action-btn" onclick="startRecognition('res1b')">🎙️ Falar</button>
+    <p id="res1b" class="speech-result"></p>
+  </div>
+
+  <div class="dialogue-line">
+    <p><strong>Say:</strong> Are you learning something new?</p>
+    <p class="translation"> Você está aprendendo algo novo?</p>
+    <button class="action-btn" onclick="speak('Are you learning something new?')">🔊 Ouvir</button>
+    <button class="action-btn" onclick="startRecognition('res1c')">🎙️ Falar</button>
+    <p id="res1c" class="speech-result"></p>
+  </div>
+</div>
+
+<!-- BLOCO 6 -->
+<div class="card">
+  <h2>6️⃣ English + Technology 💻</h2>
+
+  <p>Agora vamos começar a construir um <strong>vocabulário técnico real</strong>.</p>
+  <p>Essas palavras são usadas diariamente por desenvolvedores de <strong>JavaScript, HTML, CSS, Bootstrap e Python</strong>.</p>
+  <p>Se você quer trabalhar com tecnologia, precisa se acostumar a ouvir e falar esses termos.</p>
+
+  <hr style="opacity:.2;margin:20px 0;">
+
+  <h3>🔹 HTML</h3>
+
+  <div class="word">
+    <span><strong>Tag</strong> – etiqueta / marcador de código</span>
+    <button class="action-btn" onclick="speak('Tag')">🔊</button>
+  </div>
+  <p><strong>Context:</strong> Usamos tags para estruturar páginas web.</p>
+  <p><strong>Example:</strong> HTML uses tags like div, h1 and p.</p>
+  <p class="translation">HTML usa tags como div, h1 e p.</p>
+
+  <div class="word">
+    <span><strong>Element</strong> – elemento</span>
+    <button class="action-btn" onclick="speak('Element')">🔊</button>
+  </div>
+  <p><strong>Example:</strong> This element contains text.</p>
+  <p class="translation">Este elemento contém texto.</p>
+
+  <hr style="opacity:.2;margin:20px 0;">
+
+  <h3>🔹 CSS</h3>
+
+  <div class="word">
+    <span><strong>Style</strong> – estilo</span>
+    <button class="action-btn" onclick="speak('Style')">🔊</button>
+  </div>
+  <p><strong>Context:</strong> CSS controls the style of a website.</p>
+  <p><strong>Example:</strong> CSS changes the color and the layout.</p>
+  <p class="translation">CSS muda a cor e o layout.</p>
+
+  <div class="word">
+    <span><strong>Layout</strong> – estrutura visual / organização</span>
+    <button class="action-btn" onclick="speak('Layout')">🔊</button>
+  </div>
+  <p><strong>Example:</strong> Bootstrap helps create responsive layouts.</p>
+  <p class="translation">Bootstrap ajuda a criar layouts responsivos.</p>
+
+  <hr style="opacity:.2;margin:20px 0;">
+
+  <h3>🔹 JavaScript</h3>
+
+  <div class="word">
+    <span><strong>Function</strong> – função</span>
+    <button class="action-btn" onclick="speak('Function')">🔊</button>
+  </div>
+  <p><strong>Context:</strong> A function performs an action.</p>
+  <p><strong>Example:</strong> This function calculates the result.</p>
+  <p class="translation">Esta função calcula o resultado.</p>
+
+  <div class="word">
+    <span><strong>Variable</strong> – variável</span>
+    <button class="action-btn" onclick="speak('Variable')">🔊</button>
+  </div>
+  <p><strong>Example:</strong> A variable stores information.</p>
+  <p class="translation">Uma variável armazena informação.</p>
+
+  <div class="word">
+    <span><strong>Event</strong> – evento</span>
+    <button class="action-btn" onclick="speak('Event')">🔊</button>
+  </div>
+  <p><strong>Example:</strong> A click event triggers an action.</p>
+  <p class="translation">Um evento de clique dispara uma ação.</p>
+
+  <hr style="opacity:.2;margin:20px 0;">
+
+  <h3>🔹 Python</h3>
+
+  <div class="word">
+    <span><strong>Script</strong> – script / programa</span>
+    <button class="action-btn" onclick="speak('Script')">🔊</button>
+  </div>
+  <p><strong>Example:</strong> This Python script reads data.</p>
+  <p class="translation">Este script em Python lê dados.</p>
+
+  <div class="word">
+    <span><strong>Library</strong> – biblioteca</span>
+    <button class="action-btn" onclick="speak('Library')">🔊</button>
+  </div>
+  <p><strong>Context:</strong> A library provides ready-to-use tools.</p>
+  <p><strong>Example:</strong> We use a library to create charts.</p>
+  <p class="translation">Usamos uma biblioteca para criar gráficos.</p>
+
+  <hr style="opacity:.2;margin:20px 0;">
+
+  <h3>🔹 Common Developer Sentences</h3>
+
+  <div class="dialogue-line">
+    <p><strong>I am building a website.</strong></p>
+    <button class="action-btn" onclick="speak('I am building a website')">🔊</button>
+    <p class="translation">Eu estou construindo um site.</p>
+  </div>
+
+  <div class="dialogue-line">
+    <p><strong>I am fixing a bug.</strong></p>
+    <button class="action-btn" onclick="speak('I am fixing a bug')">🔊</button>
+    <p class="translation">Eu estou corrigindo um erro.</p>
+  </div>
+
+  <div class="dialogue-line">
+    <p><strong>The code is working.</strong></p>
+    <button class="action-btn" onclick="speak('The code is working')">🔊</button>
+    <p class="translation">O código está funcionando.</p>
+  </div>
+
+  <div class="dialogue-line">
+    <p><strong>The code is not working.</strong></p>
+    <button class="action-btn" onclick="speak('The code is not working')">🔊</button>
+    <p class="translation">O código não está funcionando.</p>
+  </div>
+
+  <div class="dialogue-line">
+    <p><strong>I am learning JavaScript.</strong></p>
+    <button class="action-btn" onclick="speak('I am learning JavaScript')">🔊</button>
+    <p class="translation">Eu estou aprendendo JavaScript.</p>
+  </div>
+
+</div>
+
+<a href="aula3-atividades.html">
+  <button class="action-btn">👉 Ir para as atividades</button>
+</a>
+
+<footer>© Curso PSIDE – Inglês + Tecnologia</footer>
+
+<script>
+function speak(text){
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang='en-US';
+  speechSynthesis.speak(u);
+}
+
+function startRecognition(id){
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SpeechRecognition){
+    alert('Reconhecimento de voz não suportado');
+    return;
+  }
+  const rec = new SpeechRecognition();
+  rec.lang='en-US';
+  rec.start();
+  rec.onresult=e=>{
+    document.getElementById(id).innerHTML =
+      `🗣️ Você disse: <strong>${e.results[0][0].transcript}</strong>`;
+  };
+}
+</script>
+
+</body>
+</html>
