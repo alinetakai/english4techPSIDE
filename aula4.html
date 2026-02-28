@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Aula 4 – Talking About Myself</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#0f1220;
+  --card:#1b1f3b;
+  --accent:#4a6cf7;
+  --text:#eaeaf0;
+  --muted:#aab0d6;
+  --success:#4caf50;
+}
+
+body{
+  margin:0;
+  padding:20px 20px 80px;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:linear-gradient(135deg,#0f1220,#14183a);
+  color:var(--text);
+}
+
+h1,h2,h3{color:#fff;}
+p{color:var(--muted); line-height:1.6;}
+
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:14px;
+  margin-bottom:24px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+nav button{ margin-right:10px; }
+
+button{
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  padding:10px 16px;
+  color:white;
+  cursor:pointer;
+  font-size:14px;
+  margin-top:6px;
+}
+
+.action-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  padding:8px 14px;
+  color:#fff;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.word{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.dialogue-line{
+  border-left:4px solid var(--accent);
+  padding-left:12px;
+  margin-bottom:16px;
+}
+
+.you{
+  background:rgba(74,108,247,.08);
+  padding:12px;
+  border-radius:10px;
+}
+
+.speech-result{
+  margin-top:8px;
+  color:var(--success);
+  font-weight:bold;
+}
+
+.translation{
+  color:#aaa;
+  font-size:.9rem;
+}
+
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#0b0e1a;
+  text-align:center;
+  font-size:.85rem;
+  padding:10px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <button onclick="window.location.href='aula4-atividades.html'">Atividades</button>
+  <button onclick="window.location.href='mod1.html'">Módulo 1</button>
+</nav>
+
+<h1>Aula 4 – Talking About Myself 🧠</h1>
+
+<!-- BLOCO 1 -->
+<div class="card">
+  <h2>1️⃣ Explore</h2>
+  <h2>Who are you?</h2>
+  <h3>translate</h3>
+  <p>When someone asks, “Who are you?”, the question may seem simple. But the answer can be very deep.</p>
+  <p>We can answer in different ways. We can talk about our name, our age, and where we are from. For example:
+    “My name is Ana. I am 25 years old. I am from Brazil.”</p>
+  <p>But we are more than basic information. We are our dreams, our experiences, our values, and our goals. 
+    We are students, teachers, workers, friends, sons and daughters. We are people who learn, make mistakes, 
+    grow, and change.</p>
+  <p>Your identity is not only about your job. It is also about what you love, what you believe in, and what 
+    makes you happy. Maybe you love technology. Maybe you enjoy helping animals. Maybe you dream about traveling 
+    the world.</p>
+  <p>When you answer “Who are you?”, you are telling your story. And your story is always growing.</p>
+  <p>So, who are you?</p>
+  <button class="action-btn" onclick="speak('Who Are You? When someone asks, “Who are you?”, the question may seem simple. But the answer can be very deep.We can answer in different ways. We can talk about our name, our age, and where we are from. For example: My name is Ana. I am 25 years old. I am from Brazil. But we are more than basic information. We are our dreams, our experiences, our values, and our goals. We are students, teachers, workers, friends, sons and daughters. We are people who learn, make mistakes, grow, and change. Your identity is not only about your job. It is also about what you love, what you believe in, and what makes you happy. Maybe you love technology. Maybe you enjoy helping animals. Maybe you dream about traveling the world. When you answer “Who are you?”, you are telling your story. And your story is always growing. So, who are you?')">🔊 Ouvir</button>
+
+  <h2>Talking about myself</h2>
+  <h3>translate</h3>
+  <p>Talking about myself is important. It helps people know who I am.</p>
+  <p>My name is ________.</p>
+  <p>I am ______ years old.</p>
+  <p>I am from Brazil.</p>
+  <p>I am a student. I like learning new things.</p>
+  <p>I like technology and computers.</p>
+  <p>I study programming and English.</p>
+  <p>In my free time, I like to watch videos, listen to music, and practice coding.</p>
+  <p>I am a curious person. I like to learn and grow.</p>
+  <p>In the future, I want to be a developer and create apps and websites.</p>
+  <p>This is a little about me.</p>
+  <button class="action-btn" onclick="speak('Talking About Myself. Talking about myself is important. It helps people know who I am. My name is ________. I am ______ years old. I am from Brazil. I am a student. I like learning new things. I like technology and computers. I study programming and English. In my free time, I like to watch videos, listen to music, and practice coding. I am a curious person. I like to learn and grow. In the future, I want to be a developer and create apps and websites. This is a little about me.I am a student')">🔊 Ouvir</button>
+
+  <h2>👉 Practice!</h2>
+  <p>Create a self-presentation based on what you have learned.</p>
+
+  <h2>Negative Form</h2>
+  <p>Hoje vamos aprender a forma negativa do <strong>verb to be</strong>.</p>
+
+  <p><strong>I am → I am not</strong></p>
+
+  <div class="dialogue-line">
+    <p>I am a student.</p>
+    <p>I am not a teacher.</p>
+  </div>
+
+  <p>👉 <strong>Not</strong> significa <strong>não</strong>.</p>
+  <p>Estrutura:</p>
+  <p><strong>I am not + information</strong></p>
+</div>
+
+<!-- BLOCO 2 -->
+<div class="card">
+  <h2>2️⃣ Affirmative x Negative</h2>
+
+  <div class="word">
+    <span><strong>I am a developer.</strong> – Eu sou desenvolvedor(a).</span>
+    <button class="action-btn" onclick="speak('I am a developer')">🔊</button>
+  </div>
+
+  <div class="word">
+    <span><strong>I am not a developer.</strong> – Eu não sou desenvolvedor(a).</span>
+    <button class="action-btn" onclick="speak('I am not a developer')">🔊</button>
+  </div>
+
+  <div class="word">
+    <span><strong>I am learning English.</strong></span>
+    <button class="action-btn" onclick="speak('I am learning English')">🔊</button>
+  </div>
+
+  <div class="word">
+    <span><strong>I am not learning English.</strong></span>
+    <button class="action-btn" onclick="speak('I am not learning English')">🔊</button>
+  </div>
+
+</div>
+
+<!-- BLOCO 3 -->
+<div class="card">
+  <h2>3️⃣ Practice</h2>
+
+  <div class="dialogue-line">
+    <p>I am a developer.</p>
+    <p>I am not a designer.</p>
+    <p>I am learning English.</p>
+    <p>I am not learning music.</p>
+  </div>
+
+  <button class="action-btn" onclick="startRecognition('res1','i am a developer. i am not a designer. i am learning english. i am not learning music')">🎙️ Falar</button>
+  <p id="res1"></p>
+
+  <p>👉 A posição do <strong>not</strong> é sempre depois do <strong>am</strong>.</p>
+</div>
+
+<!-- BLOCO 4 -->
+<div class="card">
+  <h2>4️⃣ Listening</h2>
+
+  <div class="dialogue-line">
+    <p><strong>Alex:</strong> I am a technology student.</p>
+    <button class="action-btn" onclick="speak('I am a technology student')">🔊 Ouvir</button>
+  </div>
+
+  <div class="dialogue-line">
+    <p><strong>Alex:</strong> I am not a designer.</p>
+    <button class="action-btn" onclick="speak('I am not a designer')">🔊 Ouvir</button>
+  </div>
+
+  <p class="translation">
+    Eu sou estudante de tecnologia. Eu não sou designer.
+  </p>
+</div>
+
+<!-- BLOCO 5 -->
+<div class="card">
+  <h2>5️⃣ Writing – Build Sentences ✍️</h2>
+
+  <p>Exemplos:</p>
+
+  <div class="dialogue-line">
+    <p>I am a student.</p>
+    <p>I am not a teacher.</p>
+    <p>I am learning technology.</p>
+  </div>
+
+  <p>Você pode combinar frases afirmativas e negativas! 😁</p>
+  <p>Crie pares de frases combinadas assim (mínimo 3 pares).</p>
+</div>
+
+<!-- BLOCO 6 -->
+<div class="card">
+  <h2>6️⃣ English + Technology 💻</h2>
+
+  <p>Agora é sua missão:</p>
+  <p>Escreva um caderno ou doc virtual:</p>
+
+  <div class="dialogue-line">
+    <p>1️⃣ I am __________.</p>
+    <p>2️⃣ I am not __________.</p>
+    <p>3️⃣ I am learning __________.</p>
+  </div>
+
+  <p>Exemplo:</p>
+
+  <div class="dialogue-line">
+    <p>I am a student.</p>
+    <p>I am not a teacher.</p>
+    <p>I am learning programming.</p>
+  </div>
+
+  <p>👉 Você já está formando frases completas em inglês!</p>
+
+  <h2>Palavras e Expressões Tech</h2>
+
+  <div class="word">
+    <span>div – divisão/container (bloco usado para organizar elementos no HTML)</span>
+    <button class="action-btn" onclick="speak('div')">🔊</button>
+  </div>
+
+  <div class="word">
+    <span>form – formulário (estrutura para coletar dados do usuário)</span>
+    <button class="action-btn" onclick="speak('form')">🔊</button>
+  </div>
+
+  <div class="word">
+    <span>input – campo de entrada (onde o usuário digita informações)</span>
+    <button class="action-btn" onclick="speak('input')">🔊</button>
+  </div>
+
+  <div class="word">
+    <span>color – cor (propriedade usada no CSS para definir a cor do texto)</span>
+    <button class="action-btn" onclick="speak('color')">🔊</button>
+  </div>
+
+  <div class="word">
+    <span>background – fundo (cor ou imagem de fundo de um elemento)</span>
+    <button class="action-btn" onclick="speak('background')">🔊</button>
+  </div>
+
+  <div class="word">
+    <span>margin – margem (espaço externo ao redor de um elemento)</span>
+    <button class="action-btn" onclick="speak('margin')">🔊</button>
+  </div>
+
+  <div class="word">
+    <span>loop – laço / repetição (estrutura qeu repete um bloco de código)</span>
+    <button class="action-btn" onclick="speak('loop')">🔊</button>
+  </div>
+
+  <div class="word">
+    <span>condition – condição (regra lógica que determina se algo acontece</span>
+    <button class="action-btn" onclick="speak('condition')">🔊</button>
+  </div>
+
+  <div class="word">
+    <span>if – se (estrutura condicional usada para tomar decisões)</span>
+    <button class="action-btn" onclick="speak('if')">🔊</button>
+  </div>
+
+  <p>I am working on a project.</p>
+  <button class="action-btn" onclick="speak('I am working on a project')">🔊 Ouvir frase</button>
+</div>
+
+<a href="aula4-atividades.html">
+  <button class="action-btn">👉 Ir para as atividades</button>
+</a>
+
+<footer>© Curso PSIDE – Inglês + Tecnologia</footer>
+
+<script>        
+function speak(text){
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang='en-US';
+  speechSynthesis.speak(u);
+}
+
+function normalize(text){
+  return text.toLowerCase().trim().replace(/[.,]/g,"");
+}
+
+function startRecognition(elementId, expected){
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if(!SpeechRecognition){
+    alert("Reconhecimento de voz não suportado neste navegador.");
+    return;
+  }
+
+  const recognition = new SpeechRecognition();
+  recognition.lang='en-US';
+  recognition.start();
+
+  recognition.onresult = function(event){
+    const spoken = normalize(event.results[0][0].transcript);
+    const correct = normalize(expected);
+
+    const el = document.getElementById(elementId);
+
+    if(spoken === correct){
+      el.innerHTML = `
+        <span class="spoken correct">
+        ✅ Você disse: "${spoken}" <br>
+        Pronúncia correta!
+        </span>
+      `;
+    } else {
+      el.innerHTML = `
+        <span class="spoken incorrect">
+        ❌ Você disse: "${spoken}" <br>
+        Modelo esperado: "${correct}"
+        </span>
+      `;
+    }
+  };
+}
+</script>
+
+</body>
+</html>

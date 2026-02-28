@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Aula 4 – Atividades | English + Tech</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#0f1220;
+  --card:#1b1f3b;
+  --accent:#4a6cf7;
+  --text:#eaeaf0;
+  --muted:#aab0d6;
+  --success:#4caf50;
+  --error:#ff5c5c;
+}
+
+body{
+  margin:0;
+  padding:20px 20px 90px;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:linear-gradient(135deg,#0f1220,#14183a);
+  color:var(--text);
+}
+
+.card{
+  background:var(--card);
+  padding:24px;
+  border-radius:16px;
+  max-width:720px;
+  margin:40px auto;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+button{
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  padding:12px 18px;
+  color:white;
+  cursor:pointer;
+  font-size:15px;
+  margin-top:14px;
+}
+
+button.secondary{
+  background:#242862;
+}
+
+button:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.options button{
+  display:block;
+  width:100%;
+  margin:10px 0;
+}
+
+input, textarea{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:none;
+  margin-top:10px;
+  font-size:15px;
+}
+
+textarea{
+  min-height:140px;
+  resize:vertical;
+}
+
+.feedback{
+  margin-top:16px;
+  font-weight:bold;
+}
+
+.success{color:var(--success);}
+.error{color:var(--error);}
+
+.progress{
+  text-align:center;
+  margin-top:20px;
+  color:var(--muted);
+}
+
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#0b0e1a;
+  text-align:center;
+  font-size:.85rem;
+  padding:10px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<nav>
+  <button onclick="window.location.href='aula4.html'">Aula</button>
+  <button onclick="window.location.href='mod1.html'">Módulo 1</button>
+</nav>
+
+<h1>🚀 Aula 4 – Atividades</h1>
+<p>Foque no <strong>verb to be negativo</strong> e frases pessoais 👩‍💻</p>
+
+<h2 id="question"></h2>
+<p id="prompt"></p>
+
+<div id="input-area"></div>
+
+<p id="feedback" class="feedback"></p>
+
+<button id="nextBtn" onclick="nextActivity()" disabled>Avançar ➡️</button>
+
+<div class="progress" id="progress"></div>
+
+</div>
+
+<footer>© Curso PSIDE – Inglês + Tecnologia</footer>
+
+<script>
+const activities = [
+
+/* ===== 1–10 Negativa básica ===== */
+{question:"Complete:",prompt:"I ___ not a designer.",type:"input",answers:["am"]},
+{question:"Choose:",type:"choice",options:["I am not a developer","I not am a developer","I am a not developer"],answer:"I am not a developer"},
+{question:"Complete:",prompt:"She ___ not a student.",type:"input",answers:["is"]},
+{question:"Complete:",prompt:"They ___ not developers.",type:"input",answers:["are"]},
+{question:"Translate:",prompt:"I am not a backend developer",type:"choice",options:["Eu sou backend","Eu não sou desenvolvedor backend","Eu trabalho com backend"],answer:"Eu não sou desenvolvedor backend"},
+{question:"Choose:",prompt:"Correct negative:",type:"choice",options:["He is not learning","He not is learning","He is learning not"],answer:"He is not learning"},
+{question:"Complete:",prompt:"I am ___ understanding this code.",type:"choice",options:["not","no","don't"],answer:"not"},
+{question:"Translate:",prompt:"We are not ready",type:"choice",options:["Nós estamos prontos","Nós não estamos prontos","Nós somos prontos"],answer:"Nós não estamos prontos"},
+{question:"Complete:",prompt:"It ___ not working.",type:"input",answers:["is"]},
+{question:"Choose:",prompt:"Negative of 'I am a student':",type:"choice",options:["I am not a student","I not am student","I am no student"],answer:"I am not a student"},
+
+/* ===== 11–20 Afirmativa x Negativa ===== */
+{question:"Choose:",prompt:"Affirmative:",type:"choice",options:["I am learning Python","I am not learning Python"],answer:"I am learning Python"},
+{question:"Choose:",prompt:"Negative:",type:"choice",options:["I am learning HTML","I am not learning HTML"],answer:"I am not learning HTML"},
+{question:"Complete:",prompt:"I ___ building a website.",type:"input",answers:["am"]},
+{question:"Complete:",prompt:"I am ___ building a website.",type:"choice",options:["not","no","never"],answer:"not"},
+{question:"Translate:",prompt:"She is not fixing a bug",type:"choice",options:["Ela está corrigindo um erro","Ela não está corrigindo um erro","Ela gosta de bugs"],answer:"Ela não está corrigindo um erro"},
+{question:"Choose:",prompt:"Correct:",type:"choice",options:["They are not designers","They not are designers","They are designers not"],answer:"They are not designers"},
+{question:"Complete:",prompt:"We ___ not working today.",type:"input",answers:["are"]},
+{question:"Translate:",prompt:"I am not working on a project",type:"choice",options:["Eu estou trabalhando em um projeto","Eu não estou trabalhando em um projeto","Eu gosto de projetos"],answer:"Eu não estou trabalhando em um projeto"},
+{question:"Complete:",prompt:"He is ___ a backend developer.",type:"choice",options:["not","no","never"],answer:"not"},
+{question:"Choose:",prompt:"Correct sentence:",type:"choice",options:["I am not a beginner developer","I not am a beginner","I am beginner not"],answer:"I am not a beginner developer"},
+
+/* ===== 21–30 Vocabulário Tech ===== */
+{question:"Translate:",prompt:"Loop",type:"choice",options:["Laço de repetição","Cor","Margem"],answer:"Laço de repetição"},
+{question:"Translate:",prompt:"Condition",type:"choice",options:["Condição","Evento","Layout"],answer:"Condição"},
+{question:"Choose:",prompt:"HTML creates ____.",type:"choice",options:["structure","music","loops"],answer:"structure"},
+{question:"Choose:",prompt:"CSS controls ____.",type:"choice",options:["style","data","bugs"],answer:"style"},
+{question:"Translate:",prompt:"Automation",type:"choice",options:["Automação","Banco de dados","Código"],answer:"Automação"},
+{question:"Complete:",prompt:"Python uses the function ____ to show text.",type:"input",answers:["print"]},
+{question:"Translate:",prompt:"Data",type:"choice",options:["Dados","Erro","Biblioteca"],answer:"Dados"},
+{question:"Choose:",prompt:"JavaScript uses ____ for conditions.",type:"choice",options:["if","color","margin"],answer:"if"},
+{question:"Complete:",prompt:"I am not using ____ today. (HTML/CSS/banana)",type:"choice",options:["banana","HTML","CSS"],answer:"HTML"},
+{question:"Choose:",prompt:"Bootstrap helps with responsive ____.",type:"choice",options:["design","bugs","loops"],answer:"design"},
+
+/* ===== 31–35 Listening ===== */
+{
+question:"Listening – Ouça:",
+audio:"I am not a designer.",
+type:"choice",
+options:[
+"I am not a designer.",
+"I am a designer.",
+"I designer am not."
+],
+answer:"I am not a designer."
+},
+{
+question:"Listening – Tradução:",
+audio:"She is not working today.",
+type:"choice",
+options:[
+"Ela está trabalhando hoje.",
+"Ela não está trabalhando hoje.",
+"Ela gosta de trabalhar."
+],
+answer:"Ela não está trabalhando hoje."
+},
+
+/* ===== 36–38 Speaking ===== */
+{
+question:"Speaking – Say:",
+prompt:"I am not a backend developer.",
+type:"speech",
+answers:["i am not a backend developer"]
+},
+{
+question:"Speaking – Say:",
+prompt:"I am working on a project.",
+type:"speech",
+answers:["i am working on a project"]
+},
+{
+question:"Speaking – Say:",
+prompt:"I am not understanding this code.",
+type:"speech",
+answers:["i am not understanding this code"]
+},
+
+/* ===== 39–42 Writing ===== */
+{
+question:"Escreva em inglês:",
+prompt:"Eu não sou designer.",
+type:"input",
+answers:["i am not a designer"]
+},
+{
+question:"Escreva em inglês:",
+prompt:"Eu estou trabalhando em um projeto.",
+type:"input",
+answers:["i am working on a project"]
+},
+{
+question:"Escreva em inglês:",
+prompt:"Eu não estou aprendendo CSS.",
+type:"input",
+answers:["i am not learning css"]
+},
+{
+question:"Traduza:",
+prompt:"I am not fixing a bug.",
+type:"choice",
+options:[
+"Eu estou corrigindo um erro.",
+"Eu não estou corrigindo um erro.",
+"Eu gosto de erros."
+],
+answer:"Eu não estou corrigindo um erro."
+},
+
+/* ===== 43–45 Mission Final ===== */
+{
+question:"Missão – Escreva:",
+prompt:"Escreva 3 frases sobre você: 1 afirmativa e 2 negativas (use I am / I am not)",
+type:"textarea",
+answers:[
+"i am a developer i am not a designer i am not a backend developer"
+]
+},
+{
+question:"Missão – Speaking:",
+prompt:"I am a beginner developer and I am not a designer.",
+type:"speech",
+answers:["i am a beginner developer and i am not a designer"]
+},
+{
+question:"Final:",
+prompt:"Choose the correct negative:",
+type:"choice",
+options:[
+"I am not ready.",
+"I not am ready.",
+"I am ready not."
+],
+answer:"I am not ready."
+}
+
+];
+
+let index = 0;
+let spokenResult = "";
+
+const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.lang = "en-US";
+
+function normalize(text){
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/\n/g," ")
+    .replace(/\s+/g," ")
+    .replace(/[.,]/g,"");
+}
+
+function speak(text){
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-US";
+  speechSynthesis.speak(u);
+}
+
+function loadActivity(){
+  const a = activities[index];
+  document.getElementById("question").innerText = `📝 ${a.question}`;
+  document.getElementById("prompt").innerText = a.prompt || "";
+  document.getElementById("feedback").innerText = "";
+  document.getElementById("nextBtn").disabled = true;
+  spokenResult = "";
+
+  const area = document.getElementById("input-area");
+  area.innerHTML = "";
+
+  if(a.audio){
+    const btn = document.createElement("button");
+    btn.innerText = "🔊 Ouvir áudio";
+    btn.onclick = ()=> speak(a.audio);
+    area.appendChild(btn);
+  }
+
+  if(a.type === "input"){
+    const input = document.createElement("input");
+    input.oninput = ()=> checkAnswer(input.value);
+    area.appendChild(input);
+  }
+
+  if(a.type === "textarea"){
+    const ta = document.createElement("textarea");
+    ta.oninput = ()=> checkAnswer(ta.value);
+    area.appendChild(ta);
+  }
+
+  if(a.type === "choice"){
+    const div = document.createElement("div");
+    div.className = "options";
+    a.options.forEach(opt=>{
+      const btn = document.createElement("button");
+      btn.innerText = opt;
+      btn.className = "secondary";
+      btn.onclick = ()=> checkAnswer(opt);
+      div.appendChild(btn);
+    });
+    area.appendChild(div);
+  }
+
+  if(a.type === "speech"){
+    const btn = document.createElement("button");
+    btn.innerText = "🎙️ Gravar fala";
+    btn.onclick = ()=>{
+      recognition.start();
+      recognition.onresult = e=>{
+        spokenResult = normalize(e.results[0][0].transcript);
+        checkAnswer(spokenResult);
+      };
+    };
+    area.appendChild(btn);
+  }
+
+  document.getElementById("progress").innerText =
+    `Atividade ${index+1} de ${activities.length}`;
+}
+
+function checkAnswer(answer){
+  const a = activities[index];
+  let correct = false;
+
+  if(a.type === "input" || a.type === "textarea"){
+    correct = a.answers.includes(normalize(answer));
+  }else if(a.type === "speech"){
+    correct = a.answers.map(normalize).includes(answer);
+  }else{
+    correct = answer === a.answer;
+  }
+
+  const fb = document.getElementById("feedback");
+
+  if(correct){
+    fb.innerText = "✅ Muito bem! Pode avançar.";
+    fb.className = "feedback success";
+    document.getElementById("nextBtn").disabled = false;
+  }else{
+    fb.innerText = "❌ Revise a estrutura e tente novamente.";
+    fb.className = "feedback error";
+  }
+}
+
+function nextActivity(){
+  index++;
+  if(index < activities.length){
+    loadActivity();
+  }else{
+    document.querySelector(".card").innerHTML = `
+      <h1>🎉 Aula 4 concluída!</h1>
+      <p>Agora você domina afirmações e negativas com <strong>verb to be</strong> 👩‍💻🔥</p>
+      <button onclick="window.location.href='mod1.html'">Voltar ao módulo</button>
+    `;
+  }
+}
+
+loadActivity();
+</script>
+
+</body>
+</html>
