@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Aula 5 – Objects & Places</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#0f1220;
+  --card:#1b1f3b;
+  --accent:#4a6cf7;
+  --text:#eaeaf0;
+  --muted:#aab0d6;
+  --success:#4caf50;
+}
+
+body{
+  margin:0;
+  padding:20px 20px 80px;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:linear-gradient(135deg,#0f1220,#14183a);
+  color:var(--text);
+}
+
+h1,h2,h3{color:#fff;}
+p{color:var(--muted); line-height:1.6;}
+
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:14px;
+  margin-bottom:24px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+nav button{ margin-right:10px; }
+
+button{
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  padding:10px 16px;
+  color:white;
+  cursor:pointer;
+  font-size:14px;
+  margin-top:6px;
+}
+
+.action-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  padding:8px 14px;
+  color:#fff;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.word{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.dialogue-line{
+  border-left:4px solid var(--accent);
+  padding-left:12px;
+  margin-bottom:16px;
+}
+
+.you{
+  background:rgba(74,108,247,.08);
+  padding:12px;
+  border-radius:10px;
+}
+
+.speech-result{
+  margin-top:8px;
+  color:var(--success);
+  font-weight:bold;
+}
+
+.translation{
+  color:#aaa;
+  font-size:.9rem;
+}
+
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#0b0e1a;
+  text-align:center;
+  font-size:.85rem;
+  padding:10px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<button onclick="window.location.href='aula5-atividades.html'">Atividades</button>
+<button onclick="window.location.href='mod1.html'">Módulo 1</button>
+</nav>
+
+<h1>Aula 5 – Objects & Places 🧭</h1>
+
+<!-- BLOCO 1 -->
+<div class="card">
+
+<h2>1️⃣ Explore</h2>
+
+<h2>📚 Usando this e that</h2>
+
+<p>Em inglês usamos <strong>this</strong> e <strong>that</strong> para identificar / falar sobre objetos ou lugares.</p>
+
+<div class="dialogue-line">
+<p><strong>This</strong> → isto / este / esta (usamos quando o objeto ou lugar está perto de quem fala)</p>
+<p><strong>That</strong> → aquilo / aquele / aquela (usamos quando o objeto ou lugar está mais longe de quem fala)</p>
+<p>📌 Pense assim:</p>
+<p>👆 This → perto</p>
+<p>👉 That → longe</p>
+</div>
+
+<p>Exemplos:</p>
+
+<div class="dialogue-line">
+    <p>This is my computer.</p>
+    <p class="translation">
+    Este é meu computador.
+    </p>
+    <button class="action-btn" onclick="speak('This is my computer.')">🔊 Ouvir</button>
+</div>
+
+<div class="dialogue-line">
+    <p>This is my classroom.</p>
+    <p class="translation">
+    Esta é minha sala de aula.
+    </p>
+    <button class="action-btn" onclick="speak('This is my classroom.')">🔊 Ouvir</button>
+</div>
+
+<div class="dialogue-line">
+    <p>That is a building.</p>
+    <p class="translation">
+    Aquilo é um prédio.
+    </p>
+    <button class="action-btn" onclick="speak('That is a building.')">🔊 Ouvir</button>
+</div>
+
+<div class="dialogue-line">
+    <p>That is a school.</p>
+    <p class="translation">
+    Aquela é uma escola.
+    </p>
+    <button class="action-btn" onclick="speak('That is a school.')">🔊 Ouvir</button>
+</div>
+
+<div class="dialogue-line">
+    <p>That is a park.</p>
+    <p class="translation">
+    Aquele é um parque.
+    </p>
+    <button class="action-btn" onclick="speak('That is a park.')">🔊 Ouvir</button>
+</div>
+
+<p>💡 Dica simples:</p>
+<p>Se você pode tocar ou está muito perto, use this.</p>
+<p>Se você aponta para algo distante, use that.</p>
+<br>
+<p>✏️ Translate:</p>
+<p>I am in my classroom today.</p>
+<p>This is my desk and this is my computer.</p>
+<p>This is my notebook and this is my chair.</p>
+<p>My teacher is near me. This is my teacher.</p>
+<p>Now I look at the window.</p>
+<p>That is the school yard.</p>
+<p>That is a big tree and that is the library.</p>
+<p>I like this place. This is my classroom.</p>
+
+</div>
+
+<!-- BLOCO 2 -->
+<div class="card">
+
+<h2>2️⃣ Identifying Objects</h2>
+
+<div class="word">
+<span><strong>This is a computer.</strong> – Este é um computador.</span>
+<button class="action-btn" onclick="speak('This is a computer')">🔊</button>
+</div>
+
+<div class="word">
+<span><strong>This is a keyboard.</strong> – Este é um teclado.</span>
+<button class="action-btn" onclick="speak('This is a keyboard')">🔊</button>
+</div>
+
+<div class="word">
+<span><strong>This is a screen.</strong> – Esta é uma tela.</span>
+<button class="action-btn" onclick="speak('This is a screen')">🔊</button>
+</div>
+
+<div class="word">
+<span><strong>That is a chair.</strong> – Aquela é uma cadeira.</span>
+<button class="action-btn" onclick="speak('That is a chair')">🔊</button>
+</div>
+
+<div class="word">
+<span><strong>That is a table.</strong> – Aquela é uma mesa.</span>
+<button class="action-btn" onclick="speak('That is a table')">🔊</button>
+</div>
+
+</div>
+
+<!-- BLOCO 3 -->
+<div class="card">
+
+<h2>3️⃣ Practice</h2>
+
+<div class="dialogue-line">
+<p>This is my computer.</p>
+<p>This is my keyboard.</p>
+<p>That is a chair.</p>
+<p>That is a table.</p>
+</div>
+
+<button class="action-btn" onclick="startRecognition('res1','this is my computer this is my keyboard that is a chair that is a table')">🎙️ Falar</button>
+
+<p id="res1"></p>
+
+<p>👉 Use <strong>this</strong> para coisas perto.</p>
+<p>👉 Use <strong>that</strong> para coisas mais distantes.</p>
+
+</div>
+
+<!-- BLOCO 4 -->
+<div class="card">
+
+<h2>4️⃣ Listening</h2>
+
+<div class="dialogue-line">
+<p><strong>Alex:</strong> This is my laptop.</p>
+<button class="action-btn" onclick="speak('This is my laptop')">🔊 Ouvir</button>
+</div>
+
+<div class="dialogue-line">
+<p><strong>Alex:</strong> That is my desk.</p>
+<button class="action-btn" onclick="speak('That is my desk')">🔊 Ouvir</button>
+</div>
+
+<p class="translation">
+Este é meu laptop. Aquela é minha mesa.
+</p>
+
+</div>
+
+<!-- BLOCO 5 -->
+<div class="card">
+
+<h2>5️⃣ Speaking Visual 🎤</h2>
+
+<div class="dialogue-line">
+
+<p>This is my 💻.</p>
+<p>This is my 👟🩴👢.</p>
+
+<p>That is my 🚗.</p>
+<p>That is my 🏚️.</p>
+
+</div>
+
+<button class="action-btn" onclick="startRecognition('res2','this is my computer. this is my shoes. that is my car. that is my house.')">🎙️ Falar</button>
+
+<p id="res2"></p>
+
+</div>
+
+<!-- BLOCO 6 -->
+<div class="card">
+
+<h2>6️⃣ English + Technology 💻</h2>
+
+<div class="word">
+<span>attribute – atributo</span>
+<button class="action-btn" onclick="speak('attribute')">🔊</button>
+</div>
+
+<div class="word">
+<span>image – imagem</span>
+<button class="action-btn" onclick="speak('image')">🔊</button>
+</div>
+
+<div class="word">
+<span>array – lista/vetor</span>
+<button class="action-btn" onclick="speak('array')">🔊</button>
+</div>
+
+<div class="word">
+<span>write code – escrever código</span>
+<button class="action-btn" onclick="speak('write code')">🔊</button>
+</div>
+
+<div class="word">
+<span>run the code – executar o código</span>
+<button class="action-btn" onclick="speak('run the code')">🔊</button>
+</div>
+
+<div class="word">
+<span>deploy an app – publicar um aplicativo</span>
+<button class="action-btn" onclick="speak('deploy an app')">🔊</button>
+</div>
+
+<div class="word">
+<span>push to GitHub – enviar código para o GitHub</span>
+<button class="action-btn" onclick="speak('push to GitHub')">🔊</button>
+</div>
+
+<p>Frases úteis:</p>
+
+<div class="dialogue-line">
+<p>This is my computer.</p>
+<p>This is my code.</p>
+<p>That is my project.</p>
+</div>
+
+<button class="action-btn" onclick="speak('This is my computer. This is my code. That is my project.')">🔊 Ouvir frases</button>
+
+</div>
+
+<!-- MISSÃO -->
+
+<div class="card">
+
+<h2>🎯 Mission – Real World</h2>
+
+<p>Objetos reais perto de você.</p>
+
+<div class="dialogue-line">
+
+<p>1️⃣ This is my computer.</p>
+
+<p>2️⃣ This is my keyboard.</p>
+
+<p>3️⃣ That is a chair.</p>
+
+<p>4️⃣ That is a table.</p>
+
+</div>
+
+<p>👉 Experimente falar apontando para os objetos reais.</p>
+
+<button class="action-btn" onclick="startRecognition('res3','this is my computer. this is my keyboard. that is a chair. that is a table.')">🎙️ Falar</button>
+
+<p id="res3"></p>
+
+</div>
+
+<a href="aula5-atividades.html">
+<button class="action-btn">👉 Ir para as atividades</button>
+</a>
+
+<footer>© Curso PSIDE – Inglês + Tecnologia</footer>
+
+<script>
+
+function speak(text){
+const u = new SpeechSynthesisUtterance(text);
+u.lang='en-US';
+speechSynthesis.speak(u);
+}
+
+function normalize(text){
+return text.toLowerCase().trim().replace(/[.,]/g,"");
+}
+
+function startRecognition(elementId, expected){
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if(!SpeechRecognition){
+alert("Reconhecimento de voz não suportado neste navegador.");
+return;
+}
+
+const recognition = new SpeechRecognition();
+recognition.lang='en-US';
+recognition.start();
+
+recognition.onresult = function(event){
+
+const spoken = normalize(event.results[0][0].transcript);
+const correct = normalize(expected);
+
+const el = document.getElementById(elementId);
+
+if(spoken === correct){
+
+el.innerHTML = `
+<span class="spoken correct">
+✅ Você disse: "${spoken}" <br>
+Pronúncia correta!
+</span>
+`;
+
+}else{
+
+el.innerHTML = `
+<span class="spoken incorrect">
+❌ Você disse: "${spoken}" <br>
+Modelo esperado: "${correct}"
+</span>
+`;
+
+}
+
+};
+
+}
+
+</script>
+
+</body>
+</html>
