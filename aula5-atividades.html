@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Aula 5 – Atividades | English + Tech</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#0f1220;
+  --card:#1b1f3b;
+  --accent:#4a6cf7;
+  --text:#eaeaf0;
+  --muted:#aab0d6;
+  --success:#4caf50;
+  --error:#ff5c5c;
+}
+
+body{
+  margin:0;
+  padding:20px 20px 90px;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:linear-gradient(135deg,#0f1220,#14183a);
+  color:var(--text);
+}
+
+.card{
+  background:var(--card);
+  padding:24px;
+  border-radius:16px;
+  max-width:720px;
+  margin:40px auto;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+button{
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  padding:12px 18px;
+  color:white;
+  cursor:pointer;
+  font-size:15px;
+  margin-top:14px;
+}
+
+button.secondary{
+  background:#242862;
+}
+
+button:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.options button{
+  display:block;
+  width:100%;
+  margin:10px 0;
+}
+
+input, textarea{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:none;
+  margin-top:10px;
+  font-size:15px;
+}
+
+textarea{
+  min-height:140px;
+  resize:vertical;
+}
+
+.feedback{
+  margin-top:16px;
+  font-weight:bold;
+}
+
+.success{color:var(--success);}
+.error{color:var(--error);}
+
+.progress{
+  text-align:center;
+  margin-top:20px;
+  color:var(--muted);
+}
+
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#0b0e1a;
+  text-align:center;
+  font-size:.85rem;
+  padding:10px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<nav>
+  <button onclick="window.location.href='aula5.html'">Aula</button>
+  <button onclick="window.location.href='mod1.html'">Módulo 1</button>
+</nav>
+
+<h1>🚀 Aula 5 – Atividades</h1>
+<p>Foque no uso de <strong>this / that</strong> e objetos 👀</p>
+
+<h2 id="question"></h2>
+<p id="prompt"></p>
+
+<div id="input-area"></div>
+
+<p id="feedback" class="feedback"></p>
+
+<button id="nextBtn" onclick="nextActivity()" disabled>Avançar ➡️</button>
+
+<div class="progress" id="progress"></div>
+
+</div>
+
+<footer>© Curso PSIDE – Inglês + Tecnologia</footer>
+
+<script>
+const activities = [
+
+/* ===== 1–10 THIS / THAT ===== */
+{question:"Complete:",prompt:"___ is my computer. (perto)",type:"input",answers:["this"]},
+{question:"Complete:",prompt:"___ is a building. (longe)",type:"input",answers:["that"]},
+{question:"Choose: (perto)",type:"choice",options:["This is my keyboard","That is my keyboard"],answer:"This is my keyboard"},
+{question:"Choose:",type:"choice",options:["This is far","That is far"],answer:"That is far"},
+{question:"Translate:",prompt:"This is my computer",type:"choice",options:["Este é meu computador","Aquilo é meu computador","Isto é distante"],answer:"Este é meu computador"},
+{question:"Translate:",prompt:"That is a chair",type:"choice",options:["Aquilo é uma cadeira","Isto é uma cadeira","Aqui é cadeira"],answer:"Aquilo é uma cadeira"},
+{question:"Complete:",prompt:"This ___ my laptop.",type:"input",answers:["is"]},
+{question:"Complete:",prompt:"That ___ a table.",type:"input",answers:["is"]},
+{question:"Choose:",prompt:"Near object:",type:"choice",options:["This","That"],answer:"This"},
+{question:"Choose:",prompt:"Far object:",type:"choice",options:["This","That"],answer:"That"},
+
+/* ===== 11–20 OBJECTS ===== */
+{question:"Translate:",prompt:"Computer",type:"choice",options:["Computador","Cadeira","Mesa"],answer:"Computador"},
+{question:"Translate:",prompt:"Keyboard",type:"choice",options:["Teclado","Tela","Mouse"],answer:"Teclado"},
+{question:"Translate:",prompt:"Screen",type:"choice",options:["Tela","Janela","Porta"],answer:"Tela"},
+{question:"Choose:",prompt:"This is my ____. (computador)",type:"choice",options:["computer","banana","tree"],answer:"computer"},
+{question:"Choose:",prompt:"That is a ____. (cadeira)",type:"choice",options:["chair","music","code"],answer:"chair"},
+{question:"Complete:",prompt:"This is my ____. (teclado)",type:"input",answers:["keyboard"]},
+{question:"Complete:",prompt:"That is a ____. (mesa)",type:"input",answers:["table"]},
+{question:"Choose:",prompt:"Correct:",type:"choice",options:["This is a screen","This screen is","Is this screen"],answer:"This is a screen"},
+{question:"Translate:",prompt:"This is my keyboard",type:"choice",options:["Este é meu teclado","Aquilo é meu teclado","Isto é teclado"],answer:"Este é meu teclado"},
+{question:"Translate:",prompt:"That is my desk",type:"choice",options:["Aquela é minha mesa","Este é meu desk","Eu gosto de mesa"],answer:"Aquela é minha mesa"},
+
+/* ===== 21–30 STRUCTURE ===== */
+{question:"Complete:",prompt:"This ___ my code.",type:"input",answers:["is"]},
+{question:"Complete:",prompt:"That ___ my project.",type:"input",answers:["is"]},
+{question:"Choose:",type:"choice",options:["This is my code","This my code is","Is my code this"],answer:"This is my code"},
+{question:"Choose:",type:"choice",options:["That is my project","That my project is","Is that project my"],answer:"That is my project"},
+{question:"Translate:",prompt:"This is my project",type:"choice",options:["Este é meu projeto","Aquilo é projeto","Eu trabalho no projeto"],answer:"Este é meu projeto"},
+{question:"Translate:",prompt:"That is my code",type:"choice",options:["Aquilo é meu código","Este é código","Eu gosto de código"],answer:"Aquilo é meu código"},
+{question:"Complete:",prompt:"This is my ____ (computer/project)",type:"choice",options:["computer","banana"],answer:"computer"},
+{question:"Complete:",prompt:"That is my ____ (project/table)",type:"choice",options:["project","music"],answer:"project"},
+{question:"Choose:",prompt:"Correct sentence:",type:"choice",options:["This is my laptop","This laptop is my","My is laptop this"],answer:"This is my laptop"},
+{question:"Choose:",prompt:"Correct sentence:",type:"choice",options:["That is my desk","That desk is my","Desk is that my"],answer:"That is my desk"},
+
+/* ===== 31–35 LISTENING ===== */
+{
+question:"Listening – Ouça:",
+audio:"This is my computer.",
+type:"choice",
+options:[
+"This is my computer.",
+"That is my computer.",
+"This is computer my."
+],
+answer:"This is my computer."
+},
+{
+question:"Listening – Ouça:",
+audio:"That is a chair.",
+type:"choice",
+options:[
+"That is a chair.",
+"This is a chair.",
+"Chair is that."
+],
+answer:"That is a chair."
+},
+
+/* ===== 36–38 SPEAKING ===== */
+{
+question:"Speaking – Say:",
+prompt:"This is my computer.",
+type:"speech",
+answers:["this is my computer"]
+},
+{
+question:"Speaking – Say:",
+prompt:"That is a table.",
+type:"speech",
+answers:["that is a table"]
+},
+{
+question:"Speaking – Say:",
+prompt:"This is my keyboard.",
+type:"speech",
+answers:["this is my keyboard"]
+},
+
+/* ===== 39–42 WRITING ===== */
+{
+question:"Escreva em inglês:",
+prompt:"Este é meu computador.",
+type:"input",
+answers:["this is my computer"]
+},
+{
+question:"Escreva em inglês:",
+prompt:"Aquilo é uma mesa.",
+type:"input",
+answers:["that is a table"]
+},
+{
+question:"Traduza:",
+prompt:"This is my keyboard.",
+type:"choice",
+options:[
+"Este é meu teclado",
+"Aquilo é teclado",
+"Eu gosto de teclado"
+],
+answer:"Este é meu teclado"
+},
+{
+question:"Traduza:",
+prompt:"That is a chair.",
+type:"choice",
+options:[
+"Aquela é uma cadeira",
+"Esta é cadeira",
+"Eu estou sentado"
+],
+answer:"Aquela é uma cadeira"
+},
+
+/* ===== 43–45 MISSION ===== */
+{
+question:"Missão – Escreva:",
+prompt:"Escreva 2 frases com THIS e 2 frases com THAT: Este é meu computador. Este é meu teclado. Aquela é uma cadeira. Aquela é uma mesa.",
+type:"textarea",
+answers:[
+"this is my computer this is my keyboard that is a chair that is a table"
+]
+},
+{
+question:"Missão – Speaking:",
+prompt:"This is my computer and that is a table.",
+type:"speech",
+answers:["this is my computer and that is a table"]
+},
+{
+question:"Final:",
+prompt:"Choose the correct:",
+type:"choice",
+options:[
+"This is near",
+"That is near",
+"This near is"
+],
+answer:"This is near"
+}
+
+];
+
+let index = 0;
+let spokenResult = "";
+
+const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.lang = "en-US";
+
+function normalize(text){
+  return text.toLowerCase().trim().replace(/\n/g," ").replace(/\s+/g," ").replace(/[.,]/g,"");
+}
+
+function speak(text){
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-US";
+  speechSynthesis.speak(u);
+}
+
+function loadActivity(){
+  const a = activities[index];
+  document.getElementById("question").innerText = `📝 ${a.question}`;
+  document.getElementById("prompt").innerText = a.prompt || "";
+  document.getElementById("feedback").innerText = "";
+  document.getElementById("nextBtn").disabled = true;
+
+  const area = document.getElementById("input-area");
+  area.innerHTML = "";
+
+  if(a.audio){
+    const btn = document.createElement("button");
+    btn.innerText = "🔊 Ouvir áudio";
+    btn.onclick = ()=> speak(a.audio);
+    area.appendChild(btn);
+  }
+
+  if(a.type === "input"){
+    const input = document.createElement("input");
+    input.oninput = ()=> checkAnswer(input.value);
+    area.appendChild(input);
+  }
+
+  if(a.type === "textarea"){
+    const ta = document.createElement("textarea");
+    ta.oninput = ()=> checkAnswer(ta.value);
+    area.appendChild(ta);
+  }
+
+  if(a.type === "choice"){
+    const div = document.createElement("div");
+    div.className = "options";
+    a.options.forEach(opt=>{
+      const btn = document.createElement("button");
+      btn.innerText = opt;
+      btn.className = "secondary";
+      btn.onclick = ()=> checkAnswer(opt);
+      div.appendChild(btn);
+    });
+    area.appendChild(div);
+  }
+
+  if(a.type === "speech"){
+    const btn = document.createElement("button");
+    btn.innerText = "🎙️ Gravar fala";
+    btn.onclick = ()=>{
+      recognition.start();
+      recognition.onresult = e=>{
+        spokenResult = normalize(e.results[0][0].transcript);
+        checkAnswer(spokenResult);
+      };
+    };
+    area.appendChild(btn);
+  }
+
+  document.getElementById("progress").innerText =
+    `Atividade ${index+1} de ${activities.length}`;
+}
+
+function checkAnswer(answer){
+  const a = activities[index];
+  let correct = false;
+
+  if(a.type === "input" || a.type === "textarea"){
+    correct = a.answers.includes(normalize(answer));
+  }else if(a.type === "speech"){
+    correct = a.answers.map(normalize).includes(answer);
+  }else{
+    correct = answer === a.answer;
+  }
+
+  const fb = document.getElementById("feedback");
+
+  if(correct){
+    fb.innerText = "✅ Muito bem! Pode avançar.";
+    fb.className = "feedback success";
+    document.getElementById("nextBtn").disabled = false;
+  }else{
+    fb.innerText = "❌ Revise o uso de THIS / THAT e tente novamente.";
+    fb.className = "feedback error";
+  }
+}
+
+function nextActivity(){
+  index++;
+  if(index < activities.length){
+    loadActivity();
+  }else{
+    document.querySelector(".card").innerHTML = `
+      <h1>🎉 Aula 5 concluída!</h1>
+      <p>Agora você domina <strong>this / that</strong> e objetos 👏</p>
+      <button onclick="window.location.href='mod1.html'">Voltar ao módulo</button>
+    `;
+  }
+}
+
+loadActivity();
+</script>
+
+</body>
+</html>
