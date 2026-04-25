@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Aula 7 – Articles in real life</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#0f1220;
+  --card:#1b1f3b;
+  --accent:#4a6cf7;
+  --text:#eaeaf0;
+  --muted:#aab0d6;
+  --success:#4caf50;
+  --error:#ff5c5c;
+}
+
+body{
+  margin:0;
+  padding:20px 20px 80px;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:linear-gradient(135deg,#0f1220,#14183a);
+  color:var(--text);
+}
+
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:14px;
+  margin-bottom:24px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+button{
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  padding:10px 16px;
+  color:white;
+  cursor:pointer;
+  font-size:14px;
+  margin-top:6px;
+}
+
+.action-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+
+.dialogue-line{
+  border-left:4px solid var(--accent);
+  padding-left:12px;
+  margin-bottom:16px;
+}
+
+.translation{
+  color:#aaa;
+  font-size:.9rem;
+}
+
+.correct{ color:var(--success); }
+.incorrect{ color:var(--error); }
+
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#0b0e1a;
+  text-align:center;
+  font-size:.85rem;
+  padding:10px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<button onclick="window.location.href='aula7-atividades.html'">Atividades</button>
+<button onclick="window.location.href='mod1.html'">Módulo 1</button>
+</nav>
+
+<h1>Aula 7 – Articles in real life 🧠</h1>
+
+<!-- BLOCO 1 -->
+<div class="card">
+
+<h2>1️⃣ Explore – a / an / the + Reading</h2>
+
+<p>📚 Vamos aprender usando uma história:</p>
+
+<div class="dialogue-line">
+<p>I am a student in a technology class.</p>
+<p>I have a computer and an internet connection.</p>
+<p>The computer is fast and the internet is stable.</p>
+<p>I open a project and write a code.</p>
+<p>The code is simple, but the result is good.</p>
+<p>I fix an error and test the program.</p>
+<p>The program works and I feel like a developer.</p>
+</div>
+
+<button class="action-btn" onclick="speak('I am a student in a technology class. I have a computer and an internet connection. The computer is fast and the internet is stable. I open a project and write a code. The code is simple but the result is good. I fix an error and test the program. The program works and I feel like a developer.')">🔊 Ouvir</button>
+
+<br><br>
+
+<p><strong>🎯 Sua missão:</strong> Traduza esse texto</p>
+
+<div style="margin-top:20px;">
+<button onclick="abrirTraducao()">📖 Ver Tradução</button>
+<button onclick="abrirAtividade()">📝 Fazer Atividades</button>
+<button onclick="abrirRespostas()">✅ Ver Respostas</button>
+</div>
+
+<hr style="opacity:.2;margin:20px 0;">
+
+<h3>📌 Regras simples</h3>
+
+<div class="dialogue-line">
+<p><strong>a</strong> → usado antes de palavras com som de consoante</p>
+<p>a computer, a student</p>
+</div>
+
+<div class="dialogue-line">
+<p><strong>an</strong> → usado antes de som de vogal</p>
+<p>an error, an internet connection</p>
+</div>
+
+<div class="dialogue-line">
+<p><strong>the</strong> → algo específico</p>
+<p>the computer (um computador específico)</p>
+</div>
+
+</div>
+
+<!-- BLOCO 2 -->
+<div class="card">
+<h2>2️⃣ Practice</h2>
+
+<div class="dialogue-line">
+<p>I have ___ computer.</p>
+<button onclick="startRecognition('r1','i have a computer')">🎙️ Falar</button>
+<p id="r1"></p>
+
+<p>I see ___ error.</p>
+<button onclick="startRecognition('r2','i see an error')">🎙️ Falar</button>
+<p id="r2"></p>
+
+<p>___ computer is fast.</p>
+<button onclick="startRecognition('r3','the computer is fast')">🎙️ Falar</button>
+<p id="r3"></p>
+</div>
+
+</div>
+
+<!-- BLOCO 3 -->
+<div class="card">
+<h2>3️⃣ Reading</h2>
+
+<div class="dialogue-line">
+<p>I have a laptop.</p>
+<p>The laptop is new.</p>
+<p>I write a program.</p>
+<p>The program is working.</p>
+</div>
+
+<button class="action-btn" onclick="speak('I have a laptop. The laptop is new. I write a program. The program is working.')">🔊 Ouvir</button>
+
+<p class="translation">Perceba: primeiro algo geral → depois algo específico.</p>
+
+</div>
+
+<!-- BLOCO 4 -->
+<div class="card">
+<h2>4️⃣ Game 🎮</h2>
+
+<div class="dialogue-line">
+<p>___ apple</p>
+<button onclick="checkGame(1,'an')">an</button>
+<button onclick="checkGame(1,'wrong')">a</button>
+<p id="g1"></p>
+</div>
+
+<div class="dialogue-line">
+<p>___ computer (primeira vez)</p>
+<button onclick="checkGame(2,'a')">a</button>
+<button onclick="checkGame(2,'wrong')">the</button>
+<p id="g2"></p>
+</div>
+
+<div class="dialogue-line">
+<p>___ computer (já conhecido)</p>
+<button onclick="checkGame(3,'the')">the</button>
+<button onclick="checkGame(3,'wrong')">a</button>
+<p id="g3"></p>
+</div>
+
+</div>
+
+<!-- BLOCO 5 -->
+<div class="card">
+<h2>5️⃣ Mission – Fix the sentence ✍️</h2>
+
+<div class="dialogue-line">
+<p>❌ I have an computer</p>
+<p>✔️ ______</p>
+
+<p>❌ I see a error</p>
+<p>✔️ ______</p>
+
+<p>❌ I open the project (primeira vez)</p>
+<p>✔️ ______</p>
+</div>
+
+<p>👉 Escreva ou fale as correções</p>
+
+</div>
+
+<!-- BLOCO 6 -->
+<div class="card">
+
+<h2>6️⃣ English + Technology 💻</h2>
+
+<div class="word">
+<span>commit – salvar alterações no código</span>
+<button onclick="speak('commit')">🔊</button>
+</div>
+
+<div class="word">
+<span>repository – repositório</span>
+<button onclick="speak('repository')">🔊</button>
+</div>
+
+<div class="word">
+<span>branch – ramificação do projeto</span>
+<button onclick="speak('branch')">🔊</button>
+</div>
+
+<div class="word">
+<span>merge – juntar códigos</span>
+<button onclick="speak('merge')">🔊</button>
+</div>
+
+<div class="word">
+<span>feature – funcionalidade</span>
+<button onclick="speak('feature')">🔊</button>
+</div>
+
+<div class="word">
+<span>update – atualizar</span>
+<button onclick="speak('update')">🔊</button>
+</div>
+
+<div class="word">
+<span>version – versão</span>
+<button onclick="speak('version')">🔊</button>
+</div>
+
+<p>Frases úteis:</p>
+
+<div class="dialogue-line">
+<p>I create a repository.</p>
+<p>The repository is online.</p>
+<p>I add a feature.</p>
+<p>The feature works.</p>
+</div>
+
+<button onclick="speak('I create a repository. The repository is online. I add a feature. The feature works.')">🔊 Ouvir frases</button>
+
+</div>
+
+<!-- MODAL -->
+<div id="modalTraducao" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);">
+<div style="background:#1b1f3b;margin:10% auto;padding:20px;width:80%;border-radius:12px;">
+<span onclick="fecharTraducao()" style="float:right;cursor:pointer;">&times;</span>
+
+<h2>📖 Tradução</h2>
+
+<p>
+Eu sou um estudante em uma aula de tecnologia.<br><br>
+Eu tenho um computador e uma conexão com a internet.<br>
+O computador é rápido e a internet é estável.<br><br>
+Eu abro um projeto e escrevo um código.<br>
+O código é simples, mas o resultado é bom.<br><br>
+Eu corrijo um erro e testo o programa.<br>
+O programa funciona e eu me sinto como um desenvolvedor.
+</p>
+
+</div>
+</div>
+
+<footer>© Curso PSIDE – Inglês + Tecnologia</footer>
+
+<script>
+function speak(text){
+const u = new SpeechSynthesisUtterance(text);
+u.lang='en-US';
+speechSynthesis.speak(u);
+}
+
+function normalize(t){
+return t.toLowerCase().trim().replace(/[.,]/g,"");
+}
+
+function startRecognition(id,expected){
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const rec = new SpeechRecognition();
+rec.lang='en-US';
+rec.start();
+
+rec.onresult = e=>{
+const spoken = normalize(e.results[0][0].transcript);
+const correct = normalize(expected);
+
+document.getElementById(id).innerHTML =
+spoken===correct ? "✅ Correct!" : "❌ Try again";
+};
+}
+
+function checkGame(q,type){
+const el = document.getElementById("g"+q);
+
+if(
+(q===1 && type==="an") ||
+(q===2 && type==="a") ||
+(q===3 && type==="the")
+){
+el.innerHTML="<span class='correct'>✅</span>";
+}else{
+el.innerHTML="<span class='incorrect'>❌</span>";
+}
+}
+
+function abrirTraducao(){
+document.getElementById("modalTraducao").style.display="block";
+}
+
+function fecharTraducao(){
+document.getElementById("modalTraducao").style.display="none";
+}
+
+function abrirAtividade(){
+window.open("aula7-atividades.html","_blank");
+}
+
+function abrirRespostas(){
+window.open("respostas-aula7.html","_blank");
+}
+
+window.onclick = function(e){
+if(e.target.id==="modalTraducao"){
+fecharTraducao();
+}
+}
+</script>
+
+</body>
+</html>
