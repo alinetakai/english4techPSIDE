@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Aula 8 – Review Mission</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#0f1220;
+  --card:#1b1f3b;
+  --accent:#4a6cf7;
+  --text:#eaeaf0;
+  --muted:#aab0d6;
+  --success:#4caf50;
+  --error:#ff5c5c;
+}
+
+body{
+  margin:0;
+  padding:20px 20px 80px;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:linear-gradient(135deg,#0f1220,#14183a);
+  color:var(--text);
+}
+
+h1,h2,h3{color:#fff;}
+p, ul{color:var(--muted); line-height:1.6;}
+
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:14px;
+  margin-bottom:24px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+nav button{
+  margin-right:10px;
+}
+
+button{
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  padding:10px 16px;
+  color:white;
+  cursor:pointer;
+  font-size:14px;
+  margin-top:6px;
+}
+
+.action-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  padding:8px 14px;
+  color:#fff;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.dialogue-line{
+  border-left:4px solid var(--accent);
+  padding-left:12px;
+  margin-bottom:16px;
+}
+
+.translation{
+  color:#aaa;
+  font-size:.9rem;
+}
+
+.correct{ color:var(--success); }
+.incorrect{ color:var(--error); }
+
+.word{
+  margin-bottom:16px;
+}
+
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#0b0e1a;
+  text-align:center;
+  font-size:.85rem;
+  padding:10px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<button onclick="window.location.href='aula8-atividades.html'">Atividades</button>
+<button onclick="window.location.href='mod1.html'">Módulo 1</button>
+</nav>
+
+<h1>Aula 8 – Review Mission 🚀</h1>
+
+<!-- BLOCO 1 -->
+<div class="card">
+
+<h2>1️⃣ Review Mission – Revisão Geral</h2>
+
+<p>📚 Nesta aula vamos revisar os principais conteúdos aprendidos até agora:</p>
+
+<div class="dialogue-line">
+<ul>
+<li>This / That</li>
+<li>These / Those</li>
+<li>a / an / the</li>
+<li>Singular e plural</li>
+<li>Objetos e tecnologia</li>
+<li>Frases usadas no mundo real</li>
+</ul>
+</div>
+
+<p>Agora leia o texto abaixo e tente traduzir sozinho(a).</p>
+
+<p><strong>Translate</strong></p>
+<p><em>(Texto para tradução)</em></p>
+
+<p style="margin-top:30px;">
+Today I am in a computer lab with my friends.
+</p>
+
+<p>
+This is a computer and this is a keyboard.
+</p>
+
+<p>
+These are our projects and these are our notebooks.
+</p>
+
+<p>
+The teacher is helping a student with an error in the code.
+</p>
+
+<p>
+Those are developers on the screen and those are their applications.
+</p>
+
+<p>
+We are learning programming and we are building a website together.
+</p>
+
+<p>
+It is a fun class and the students are very excited.
+</p>
+
+<div style="margin-top:30px;">
+
+<button class="action-btn" onclick="abrirTraducao()">
+📖 Ver Tradução Correta
+</button>
+
+<button class="action-btn" onclick="abrirAtividade()">
+📝 Fazer Atividades de Fixação
+</button>
+
+<button class="action-btn" onclick="abrirRespostas()">
+✅ Ver Respostas das Atividades
+</button>
+
+</div>
+
+</div>
+
+<!-- BLOCO 2 -->
+<div class="card">
+
+<h2>2️⃣ Speaking Review 🎙️</h2>
+
+<p>Repita as frases abaixo:</p>
+
+<div class="dialogue-line">
+
+<p>This is my computer.</p>
+<button class="action-btn" onclick="startRecognition('res1','this is my computer')">🎙️ Falar</button>
+<p id="res1"></p>
+
+<p>These are my projects.</p>
+<button class="action-btn" onclick="startRecognition('res2','these are my projects')">🎙️ Falar</button>
+<p id="res2"></p>
+
+<p>That is a website.</p>
+<button class="action-btn" onclick="startRecognition('res3','that is a website')">🎙️ Falar</button>
+<p id="res3"></p>
+
+<p>Those are developers.</p>
+<button class="action-btn" onclick="startRecognition('res4','those are developers')">🎙️ Falar</button>
+<p id="res4"></p>
+
+</div>
+
+</div>
+
+<!-- BLOCO 3 -->
+<div class="card">
+
+<h2>3️⃣ Listening 🎧</h2>
+
+<div class="dialogue-line">
+<p><strong>Teacher:</strong> This is a project.</p>
+<button class="action-btn" onclick="speak('This is a project')">🔊</button>
+</div>
+
+<div class="dialogue-line">
+<p><strong>Teacher:</strong> These are applications.</p>
+<button class="action-btn" onclick="speak('These are applications')">🔊</button>
+</div>
+
+<div class="dialogue-line">
+<p><strong>Teacher:</strong> That is an error.</p>
+<button class="action-btn" onclick="speak('That is an error')">🔊</button>
+</div>
+
+<div class="dialogue-line">
+<p><strong>Teacher:</strong> Those are students.</p>
+<button class="action-btn" onclick="speak('Those are students')">🔊</button>
+</div>
+
+<p class="translation">
+Este é um projeto. Estas são aplicações. Aquilo é um erro. Aqueles são estudantes.
+</p>
+
+</div>
+
+<!-- BLOCO 4 -->
+<div class="card">
+
+<h2>4️⃣ Review Game 🎮</h2>
+
+<div class="dialogue-line">
+<p>👀 Singular + perto</p>
+
+<button onclick="checkGame(1,'this')">This</button>
+<button onclick="checkGame(1,'wrong')">Those</button>
+
+<p id="game1"></p>
+</div>
+
+<div class="dialogue-line">
+<p>👀 Plural + perto</p>
+
+<button onclick="checkGame(2,'wrong')">That</button>
+<button onclick="checkGame(2,'these')">These</button>
+
+<p id="game2"></p>
+</div>
+
+<div class="dialogue-line">
+<p>👀 Palavra iniciando com som de vogal</p>
+
+<button onclick="checkGame(3,'wrong')">A</button>
+<button onclick="checkGame(3,'an')">An</button>
+
+<p id="game3"></p>
+</div>
+
+<div class="dialogue-line">
+<p>👀 Artigo usado para algo específico</p>
+
+<button onclick="checkGame(4,'the')">The</button>
+<button onclick="checkGame(4,'wrong')">A</button>
+
+<p id="game4"></p>
+</div>
+
+</div>
+
+<!-- BLOCO 5 -->
+<div class="card">
+
+<h2>5️⃣ Mission – Structured Feedback 🧠</h2>
+
+<p>Leia as frases abaixo e descubra quais estão corretas:</p>
+
+<div class="dialogue-line">
+
+<p>1️⃣ This is my keyboard.</p>
+<p>2️⃣ These is my computers.</p>
+<p>3️⃣ That is an application.</p>
+<p>4️⃣ Those are developers.</p>
+
+</div>
+
+<p>💡 Quais frases possuem erro?</p>
+
+<button class="action-btn" onclick="mostrarFeedback()">
+✅ Ver Feedback
+</button>
+
+<p id="feedbackMission"></p>
+
+</div>
+
+<!-- BLOCO 6 -->
+<div class="card">
+
+<h2>6️⃣ English + Technology 💻</h2>
+
+<div class="word">
+<span>database – banco de dados</span>
+<button class="action-btn" onclick="speak('database')">🔊</button>
+</div>
+
+<div class="word">
+<span>server – servidor</span>
+<button class="action-btn" onclick="speak('server')">🔊</button>
+</div>
+
+<div class="word">
+<span>upload – enviar arquivo</span>
+<button class="action-btn" onclick="speak('upload')">🔊</button>
+</div>
+
+<div class="word">
+<span>download – baixar arquivo</span>
+<button class="action-btn" onclick="speak('download')">🔊</button>
+</div>
+
+<div class="word">
+<span>user interface – interface do usuário</span>
+<button class="action-btn" onclick="speak('user interface')">🔊</button>
+</div>
+
+<div class="word">
+<span>responsive design – design responsivo</span>
+<button class="action-btn" onclick="speak('responsive design')">🔊</button>
+</div>
+
+<div class="word">
+<span>save the file – salvar o arquivo</span>
+<button class="action-btn" onclick="speak('save the file')">🔊</button>
+</div>
+
+<div class="word">
+<span>open the browser – abrir o navegador</span>
+<button class="action-btn" onclick="speak('open the browser')">🔊</button>
+</div>
+
+<p>Frases úteis:</p>
+
+<div class="dialogue-line">
+<p>The server is online.</p>
+<p>This is the database.</p>
+<p>These are the files.</p>
+<p>Those are responsive websites.</p>
+</div>
+
+<button class="action-btn" onclick="speak('The server is online. This is the database. These are the files. Those are responsive websites.')">
+🔊 Ouvir frases
+</button>
+
+</div>
+
+<!-- MODAL -->
+<div id="modalTraducao" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+z-index:999;
+">
+
+<div style="
+background:var(--card);
+margin:10% auto;
+padding:20px;
+width:80%;
+border-radius:12px;
+color:var(--text);
+">
+
+<span onclick="fecharTraducao()" style="float:right;cursor:pointer;font-size:24px;">
+&times;
+</span>
+
+<h2>📖 Tradução</h2>
+
+<p>
+Hoje estou em um laboratório de informática com meus amigos.<br><br>
+
+Este é um computador e este é um teclado.<br><br>
+
+Estes são nossos projetos e estes são nossos cadernos.<br><br>
+
+O professor está ajudando um estudante com um erro no código.<br><br>
+
+Aqueles são desenvolvedores na tela e aquelas são as aplicações deles.<br><br>
+
+Nós estamos aprendendo programação e estamos construindo um site juntos.<br><br>
+
+É uma aula divertida e os estudantes estão muito animados.
+</p>
+
+</div>
+</div>
+
+<footer>© Curso PSIDE – Inglês + Tecnologia</footer>
+
+<script>
+
+function speak(text){
+const u = new SpeechSynthesisUtterance(text);
+u.lang='en-US';
+speechSynthesis.speak(u);
+}
+
+function normalize(text){
+return text.toLowerCase().trim().replace(/[.,]/g,"");
+}
+
+function startRecognition(id,expected){
+
+const SpeechRecognition =
+window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if(!SpeechRecognition){
+alert("Reconhecimento não suportado");
+return;
+}
+
+const rec = new SpeechRecognition();
+
+rec.lang='en-US';
+
+rec.start();
+
+rec.onresult = function(e){
+
+const spoken = normalize(e.results[0][0].transcript);
+const correct = normalize(expected);
+
+const el = document.getElementById(id);
+
+if(spoken === correct){
+el.innerHTML = "<span class='correct'>✅ Correct!</span>";
+}else{
+el.innerHTML = "<span class='incorrect'>❌ Try again</span>";
+}
+
+};
+
+}
+
+function checkGame(question,type){
+
+if(question === 1){
+
+const el = document.getElementById("game1");
+
+if(type === "this"){
+el.innerHTML = "<span class='correct'>✅ Correct!</span>";
+}else{
+el.innerHTML = "<span class='incorrect'>❌ Try again</span>";
+}
+
+}
+
+if(question === 2){
+
+const el = document.getElementById("game2");
+
+if(type === "these"){
+el.innerHTML = "<span class='correct'>✅ Correct!</span>";
+}else{
+el.innerHTML = "<span class='incorrect'>❌ Try again</span>";
+}
+
+}
+
+if(question === 3){
+
+const el = document.getElementById("game3");
+
+if(type === "an"){
+el.innerHTML = "<span class='correct'>✅ Correct!</span>";
+}else{
+el.innerHTML = "<span class='incorrect'>❌ Try again</span>";
+}
+
+}
+
+if(question === 4){
+
+const el = document.getElementById("game4");
+
+if(type === "the"){
+el.innerHTML = "<span class='correct'>✅ Correct!</span>";
+}else{
+el.innerHTML = "<span class='incorrect'>❌ Try again</span>";
+}
+
+}
+
+}
+
+function mostrarFeedback(){
+
+document.getElementById("feedbackMission").innerHTML = `
+<span class='correct'>
+✅ Frases corretas:
+<br><br>
+1️⃣ This is my keyboard.
+<br>
+3️⃣ That is an application.
+<br>
+4️⃣ Those are developers.
+<br><br>
+</span>
+
+<span class='incorrect'>
+❌ Frase incorreta:
+<br><br>
+2️⃣ These is my computers.
+<br><br>
+✔ Correção:
+<br>
+These are my computers.
+</span>
+`;
+
+}
+
+function abrirTraducao(){
+document.getElementById("modalTraducao").style.display = "block";
+}
+
+function fecharTraducao(){
+document.getElementById("modalTraducao").style.display = "none";
+}
+
+function abrirAtividade(){
+window.open("aula8-atividades.html","_blank");
+}
+
+function abrirRespostas(){
+window.open("aula8-respostas.html","_blank");
+}
+
+window.onclick = function(event){
+
+const modal = document.getElementById("modalTraducao");
+
+if(event.target === modal){
+modal.style.display = "none";
+}
+
+}
+
+</script>
+
+</body>
+</html>
