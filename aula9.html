@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Aula 9 – Mini Project</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#0f1220;
+  --card:#1b1f3b;
+  --accent:#4a6cf7;
+  --text:#eaeaf0;
+  --muted:#aab0d6;
+  --success:#4caf50;
+  --error:#ff5c5c;
+}
+
+body{
+  margin:0;
+  padding:20px 20px 80px;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:linear-gradient(135deg,#0f1220,#14183a);
+  color:var(--text);
+}
+
+h1,h2,h3{color:#fff;}
+p, ul{color:var(--muted); line-height:1.6;}
+
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:14px;
+  margin-bottom:24px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+nav button{
+  margin-right:10px;
+}
+
+button{
+  background:var(--accent);
+  border:none;
+  border-radius:8px;
+  padding:10px 16px;
+  color:white;
+  cursor:pointer;
+  font-size:14px;
+  margin-top:6px;
+}
+
+.action-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+
+.dialogue-line{
+  border-left:4px solid var(--accent);
+  padding-left:12px;
+  margin-bottom:16px;
+}
+
+.translation{
+  color:#aaa;
+  font-size:.92rem;
+}
+
+.correct{ color:var(--success); }
+.incorrect{ color:var(--error); }
+
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#0b0e1a;
+  text-align:center;
+  font-size:.85rem;
+  padding:10px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<button onclick="window.location.href='aula9-atividades.html'">Atividades</button>
+<button onclick="window.location.href='mod1.html'">Módulo 1</button>
+</nav>
+
+<h1>Aula 9 – Mini Project 🚀</h1>
+
+<!-- BLOCO 1 -->
+<div class="card">
+<h2>1️⃣ Explore – Preparing Your Mini Project</h2>
+
+<p>Agora você vai começar seu mini projeto em inglês 🎯</p>
+
+<p>Nesta aula vamos juntar:</p>
+
+<div class="dialogue-line">
+<ul>
+<li>this / that</li>
+<li>these / those</li>
+<li>a / an / the</li>
+<li>objetos</li>
+<li>frases de tecnologia</li>
+<li>apresentação pessoal</li>
+</ul>
+</div>
+
+<p>📚 Leia o texto abaixo e tente traduzir sozinho.</p>
+
+<div class="dialogue-line">
+<p>Today I am preparing a mini project presentation.</p>
+<p>I have a computer, a keyboard and a notebook on my desk.</p>
+<p>The computer is connected to the internet.</p>
+<p>These are my project files and those are my notes.</p>
+<p>I am practicing my English and my pronunciation.</p>
+<p>I want to present a simple website for my class.</p>
+<p>The website has a menu, images and buttons.</p>
+<p>My teacher says the project looks very good.</p>
+<p>I feel excited because this is my first presentation in English.</p>
+</div>
+
+<div style="margin-top:30px;">
+
+<button class="action-btn" onclick="abrirTraducao()">
+📖 Ver Tradução Correta
+</button>
+
+<button class="action-btn" onclick="abrirAtividade()">
+📝 Fazer Atividades de Fixação
+</button>
+
+<button class="action-btn" onclick="abrirRespostas()">
+✅ Ver Respostas das Atividades
+</button>
+
+</div>
+
+</div>
+
+<!-- BLOCO 2 -->
+<div class="card">
+<h2>2️⃣ Speaking Guided 🎙️</h2>
+
+<p>Repita as frases:</p>
+
+<div class="dialogue-line">
+<p>This is my project.</p>
+<button class="action-btn" onclick="startRecognition('res1','this is my project')">🎙️ Falar</button>
+<p id="res1"></p>
+</div>
+
+<div class="dialogue-line">
+<p>These are my files.</p>
+<button class="action-btn" onclick="startRecognition('res2','these are my files')">🎙️ Falar</button>
+<p id="res2"></p>
+</div>
+
+<div class="dialogue-line">
+<p>The website is working.</p>
+<button class="action-btn" onclick="startRecognition('res3','the website is working')">🎙️ Falar</button>
+<p id="res3"></p>
+</div>
+
+<div class="dialogue-line">
+<p>I am presenting my project.</p>
+<button class="action-btn" onclick="startRecognition('res4','i am presenting my project')">🎙️ Falar</button>
+<p id="res4"></p>
+</div>
+
+</div>
+
+<!-- BLOCO 3 -->
+<div class="card">
+<h2>3️⃣ Pronunciation Tips 🔊</h2>
+
+<p>Algumas palavras importantes para praticar:</p>
+
+<div class="dialogue-line">
+<p><strong>Project</strong> → pró-jéct</p>
+<button class="action-btn" onclick="speak('project')">🔊</button>
+</div>
+
+<div class="dialogue-line">
+<p><strong>Website</strong> → uéb-sáit</p>
+<button class="action-btn" onclick="speak('website')">🔊</button>
+</div>
+
+<div class="dialogue-line">
+<p><strong>Presentation</strong> → pré-zen-têi-shon</p>
+<button class="action-btn" onclick="speak('presentation')">🔊</button>
+</div>
+
+<div class="dialogue-line">
+<p><strong>English</strong> → ín-glish</p>
+<button class="action-btn" onclick="speak('english')">🔊</button>
+</div>
+
+<p>💡 Dica:</p>
+<p>Fale devagar primeiro. Depois tente aumentar a velocidade naturalmente.</p>
+
+</div>
+
+<!-- BLOCO 4 -->
+<div class="card">
+<h2>4️⃣ Listening 👂</h2>
+
+<div class="dialogue-line">
+<p><strong>Teacher:</strong> This is a great project.</p>
+<button class="action-btn" onclick="speak('This is a great project')">🔊</button>
+</div>
+
+<div class="dialogue-line">
+<p><strong>Student:</strong> Thank you! These are my project files.</p>
+<button class="action-btn" onclick="speak('Thank you. These are my project files')">🔊</button>
+</div>
+
+<div class="dialogue-line">
+<p><strong>Teacher:</strong> The website looks very good.</p>
+<button class="action-btn" onclick="speak('The website looks very good')">🔊</button>
+</div>
+
+<p class="translation">
+Este é um ótimo projeto. Obrigado! Estes são meus arquivos do projeto. O site parece muito bom.
+</p>
+
+</div>
+
+<!-- BLOCO 5 -->
+<div class="card">
+<h2>5️⃣ Mission – Mini Presentation 🎯</h2>
+
+<p>Monte sua mini apresentação usando as frases abaixo:</p>
+
+<div class="dialogue-line">
+<p>Hello! My name is Bob.</p>
+<button class="action-btn" onclick="speak('hello my name is bob')">🔊</button>
+<p>This is my project.</p>
+<button class="action-btn" onclick="speak('This is my project')">🔊</button>
+<p>The website is about technology.</p>
+<button class="action-btn" onclick="speak('The website is about technology')">🔊</button>
+<p>These are my files.</p>
+<button class="action-btn" onclick="speak('These are my files')">🔊</button>
+<p>Thank you!</p>
+<button class="action-btn" onclick="speak('Thank you')">🔊</button>
+</div>
+
+<p>Agora tente falar tudo em sequência 🎙️</p>
+
+<button class="action-btn" onclick="startRecognition('res5','hello my name is bob this is my project the website is about technology these are my files thank you')">🎙️ Falar apresentação</button>
+
+<p id="res5"></p>
+
+</div>
+
+<!-- BLOCO 6 -->
+<div class="card">
+
+<h2>6️⃣ English + Technology 💻</h2>
+
+<div class="word">
+<span>database – banco de dados</span>
+<button class="action-btn" onclick="speak('database')">🔊</button>
+</div>
+
+<div class="word">
+<span>server – servidor</span>
+<button class="action-btn" onclick="speak('server')">🔊</button>
+</div>
+
+<div class="word">
+<span>upload file – enviar arquivo</span>
+<button class="action-btn" onclick="speak('upload file')">🔊</button>
+</div>
+
+<div class="word">
+<span>download file – baixar arquivo</span>
+<button class="action-btn" onclick="speak('download file')">🔊</button>
+</div>
+
+<div class="word">
+<span>responsive design – design responsivo</span>
+<button class="action-btn" onclick="speak('responsive design')">🔊</button>
+</div>
+
+<div class="word">
+<span>source code – código-fonte</span>
+<button class="action-btn" onclick="speak('source code')">🔊</button>
+</div>
+
+<div class="word">
+<span>user interface – interface do usuário</span>
+<button class="action-btn" onclick="speak('user interface')">🔊</button>
+</div>
+
+<p>Frases úteis:</p>
+
+<div class="dialogue-line">
+<p>The server is online.</p>
+<p>This is the source code.</p>
+<p>These are the project files.</p>
+<p>The user interface looks good.</p>
+</div>
+
+<button class="action-btn" onclick="speak('The server is online. This is the source code. These are the project files. The user interface looks good.')">🔊 Ouvir frases</button>
+
+</div>
+
+<!-- MODAL -->
+<div id="modalTraducao" style="
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.7);
+  z-index:999;
+">
+
+<div style="
+  background:var(--card);
+  margin:8% auto;
+  padding:20px;
+  width:80%;
+  border-radius:12px;
+  color:var(--text);
+">
+
+<span onclick="fecharTraducao()" style="float:right;cursor:pointer;font-size:24px;">&times;</span>
+
+<h2>📖 Tradução</h2>
+
+<p>
+Hoje estou preparando uma apresentação de mini projeto.<br><br>
+Eu tenho um computador, um teclado e um caderno na minha mesa.<br>
+O computador está conectado à internet.<br>
+Estes são meus arquivos do projeto e aquelas são minhas anotações.<br>
+Estou praticando meu inglês e minha pronúncia.<br>
+Eu quero apresentar um site simples para minha turma.<br>
+O site possui um menu, imagens e botões.<br>
+Meu professor diz que o projeto parece muito bom.<br>
+Eu me sinto animado porque esta é minha primeira apresentação em inglês.
+</p>
+
+</div>
+</div>
+
+<footer>© Curso PSIDE – Inglês + Tecnologia</footer>
+
+<script>
+function speak(text){
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang='en-US';
+  speechSynthesis.speak(u);
+}
+
+function normalize(text){
+  return text.toLowerCase().trim().replace(/[.,!?]/g,'');
+}
+
+function startRecognition(id,expected){
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if(!SpeechRecognition){
+  alert('Reconhecimento não suportado');
+  return;
+}
+
+const rec = new SpeechRecognition();
+rec.lang='en-US';
+rec.start();
+
+rec.onresult = function(e){
+
+const spoken = normalize(e.results[0][0].transcript);
+const correct = normalize(expected);
+
+const el = document.getElementById(id);
+
+if(spoken === correct){
+  el.innerHTML = "<span class='correct'>✅ Correct!</span>";
+}else{
+  el.innerHTML = "<span class='incorrect'>❌ Try again</span>";
+}
+
+}
+
+}
+
+function abrirTraducao(){
+  document.getElementById('modalTraducao').style.display='block';
+}
+
+function fecharTraducao(){
+  document.getElementById('modalTraducao').style.display='none';
+}
+
+function abrirAtividade(){
+  window.open('aula9-atividades.html','_blank');
+}
+
+function abrirRespostas(){
+  window.open('https://docs.google.com','_blank');
+}
+
+window.onclick = function(event){
+  const modal = document.getElementById('modalTraducao');
+
+  if(event.target === modal){
+    modal.style.display='none';
+  }
+}
+</script>
+
+</body>
+</html>
