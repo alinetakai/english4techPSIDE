@@ -706,7 +706,7 @@ answers:["the"]
 
 {
 question:"Mission:",
-prompt:"Escreva uma pequena apresentação (4 frases) sobre você e um projeto usando THIS, THESE, A/AN/THE. : Eu sou estudante. Este é o meu projeto. Estes são os meus arquivos. O projeto está pronto." 
+prompt:"Escreva uma pequena apresentação (4 frases) sobre você e um projeto usando THIS, THESE, A/AN/THE. : Eu sou estudante. Este é o meu projeto. Estes são os meus arquivos. O projeto está pronto.",
 type:"textarea",
 answers:[
 "i am a student this is my project these are my files the project is ready"
